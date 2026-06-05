@@ -45,3 +45,8 @@ Promise.all([
         divGroupes.innerHTML += html
     })
 })
+
+const divButeurs = document.getElementById('liste_buteurs')
+    listeButeurs.forEach(joueur => {
+        divButeurs.innerHTML += `<div class="carte-joueur"> <img src="${joueur.image}"> <p id="nom_joueur"> ${joueur.nom} </p> <p id="pays_joueur"> ${joueur.pays}</p> <p id="score_buteur"> ${joueur.buts}</p></div>`
+})
