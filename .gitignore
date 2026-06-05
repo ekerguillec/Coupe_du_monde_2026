@@ -1,0 +1,12 @@
+# Dépendances Node.js
+node_modules/
+
+# Identifiants (ne jamais mettre sur git)
+.env
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
