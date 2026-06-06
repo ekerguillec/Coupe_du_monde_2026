@@ -2,9 +2,17 @@ const d = new Date() // new Date renvoie un truc sous la forme "Thu Jun 04 2026 
 const mois = String(d.getMonth() + 1).padStart(2,'0') // +1 car janvier = 0, février = 1, ...
 const jours = String(d.getDate()).padStart(2,'0') // padStart(2, '0') permet d'afficher 2 chiffres et que 6 soit sous la forme 06
 const annee = d.getFullYear()
-const date_actuelle = '06/13/2026' // mois + '/' + jours + '/' + annee  //'06/11/2026' pour tester la fonction avec une date précise ; 
+const date_actuelle = '06/24/2026' // mois + '/' + jours + '/' + annee  //'06/11/2026' pour tester la fonction avec une date précise ; 
 const duree_intervalle = 5000
 
+function afficherDateHeure() {
+    const maintenant = new Date()
+    const heureActuelle = maintenant.getHours().toString().padStart(2, '0') + ':' + maintenant.getMinutes().toString().padStart(2, '0')
+    document.getElementById('header').innerHTML = `<h1>Dashboard <span>CMD26</span> — ${date_actuelle} ${heureActuelle}</h1>`
+}
+
+afficherDateHeure()
+setInterval(afficherDateHeure, 1000)
 
 // Games + équipes
 Promise.all([
@@ -21,6 +29,18 @@ Promise.all([
     games.games.filter(match => match.local_date.includes(date_actuelle)).forEach(match => {
         let date = match.local_date.split('/')
         date = date[1] + '/' + date[0] + '/' + date[2]
+        const heure = date.split(' ')[1]
+        let statut, classStatut
+        if (match.finished === "TRUE") {
+            statut = "Terminé"
+            classStatut = "termine"
+        } else if (match.time_elapsed !== "notstarted") {
+            statut = "En cours"
+            classStatut = "en-cours"
+        } else {
+            statut = "À venir"
+            classStatut = "a-venir"
+        }
         div.innerHTML += `
         <div class="carte-match">
             <div class="equipe-home">
@@ -28,8 +48,9 @@ Promise.all([
                 <p>${traductions[match.home_team_name_en] || match.home_team_name_en}</p>
             </div>
             <div class="score-centre">
+                <p>🕐 ${heure}</p>
                 <p>${match.home_score} - ${match.away_score}</p>
-                <p>${date}</p>
+                <span class="badge ${classStatut}">${statut}</span>
             </div>
             <div class="equipe-away">
                 <img src="https://flagcdn.com/w40/${isoCorrections[equipesParId[match.away_team_id].iso2.toLowerCase()] || equipesParId[match.away_team_id].iso2.toLowerCase()}.png">
@@ -38,6 +59,7 @@ Promise.all([
         </div>
         `
     })
+    div.innerHTML += div.innerHTML
 })
 
 // Groupes + équipes
@@ -55,9 +77,14 @@ Promise.all([
     groupes.groups.forEach(groupe => {
         let html = `<div class="carte-groupe"><h3>Groupe ${groupe.name}</h3>`
         groupe.teams.forEach(equipe => {
+            let point = 0
+            if (equipe.pts==0 || equipe.pts ==1){ point = "pt"}
+            else {point = "pts"}
             html += `<div class="carte-equipe">
-                <img src="https://flagcdn.com/w40/${(isoCorrections[equipesParId[equipe.team_id].iso2.toLowerCase()] || equipesParId[equipe.team_id].iso2).toLowerCase()}.png">
+                <div class="equipe-info"> <img src="https://flagcdn.com/w40/${(isoCorrections[equipesParId[equipe.team_id].iso2.toLowerCase()] || equipesParId[equipe.team_id].iso2).toLowerCase()}.png">
                 <p>${traductions[equipesParId[equipe.team_id].name_en] || equipesParId[equipe.team_id].name_en}</p>
+                </div>
+                <p class="pts">${equipe.pts} ${point}</p>
             </div>`
         })
         html += `</div>`
@@ -67,25 +94,25 @@ Promise.all([
 })
 
 let intervalGroupe = setInterval(() => {
-    indexGroupe = (indexGroupe + 4) % 12
+    indexGroupe = (indexGroupe + 6) % 12
     afficherGroupes(indexGroupe)
 }, duree_intervalle)
 
 document.getElementById('btn1-next').addEventListener('click', () => {
-    indexGroupe = (indexGroupe + 4) % 12
+    indexGroupe = (indexGroupe + 6) % 12
     clearInterval(intervalGroupe)
     intervalGroupe = setInterval(() => {
-        indexGroupe = (indexGroupe + 4) % 12
+        indexGroupe = (indexGroupe + 6) % 12
         afficherGroupes(indexGroupe)
     }, duree_intervalle)
     afficherGroupes(indexGroupe)
 })
 
 document.getElementById('btn1-prev').addEventListener('click', () => {
-    indexGroupe = (indexGroupe - 4 + 12) % 12
+    indexGroupe = (indexGroupe - 6 + 12) % 12
     clearInterval(intervalGroupe)
     intervalGroupe = setInterval(() => {
-        indexGroupe = (indexGroupe + 4) % 12
+        indexGroupe = (indexGroupe + 6) % 12
         afficherGroupes(indexGroupe)
     }, duree_intervalle)
     afficherGroupes(indexGroupe)
@@ -97,14 +124,15 @@ let indexGroupe = 0
 function afficherGroupes(index) {
     const cartes = document.querySelectorAll('.carte-groupe')
     cartes.forEach((carte, i) => {
-        carte.style.display = i >= index && i < index + 4 ? 'block' : 'none'
+        carte.style.display = i >= index && i < index + 6 ? 'flex' : 'none'
     })
 }
 
+// Buteurs
 
 const divButeurs = document.getElementById('liste_buteurs')
     listeButeurs.forEach(joueur => {
-        divButeurs.innerHTML += `<div class="carte-joueur"> <img src="${joueur.image}"> <p id="nom_joueur"> ${joueur.nom} </p> <p id="pays_joueur"> ${joueur.pays}</p> <p id="score_buteur"> ${joueur.buts}</p></div>`
+        divButeurs.innerHTML += `<div class="carte-joueur"><img src="${joueur.image}"><div class="joueur-info"><div class="joueur-texte"><p id="nom_joueur">${joueur.nom}</p><p id="pays_joueur">${joueur.pays}</p></div><p id="score_buteur">${joueur.buts}</p></div></div>`
 })
 
 let indexActuel = 0

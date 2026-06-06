@@ -14,7 +14,7 @@ const traductions = {
     "USA": "États-Unis",
     "United States": "États-Unis",
     "Turkey": "Turquie",
-    "Democratic Republic of the Congo": "République Démocratique du Congo",
+    "Democratic Republic of the Congo": "République D. du Congo", //Démocratique
     "Paraguay": "Paraguay",
     "Australia": "Australie",
     "Turkiye": "Turquie",

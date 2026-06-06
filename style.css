@@ -1,124 +1,442 @@
-* { 
-    margin: 0; 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --navy: #0d1a4a;
+    --navy-mid: #1a2f7a;
+    --navy-light: #2e47a4;
+    --red: #c0392b;
+    --red-light: #e74c3c;
+    --bg: #edf0f7;
+    --bg-section: #ffffff;
+    --border: #d8dde8;
+    --text: #0d1a4a;
+    --text-mid: #4a5580;
+    --text-light: #8892b0;
+    --shadow: 0 2px 12px rgba(13, 26, 74, 0.1);
+    --shadow-lg: 0 4px 24px rgba(13, 26, 74, 0.15);
 }
 
 body {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--bg);
     font-family: 'Montserrat', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
 }
 
+/* ─── HEADER ─────────────────────────────────────────── */
+
 header {
-    background-color: #141b72;
-    color: white;
-    padding : 3vh;
+    background: linear-gradient(135deg, #060e2e 0%, var(--navy) 40%, var(--navy-mid) 100%);
+    padding: 1rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.04) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 50%, rgba(46,71,164,0.3) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--red) 0%, #ff6b5b 50%, var(--red) 100%);
 }
 
 h1 {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #ffffff;
+    position: relative;
 }
+
+h1 span {
+    color: #f0c040;
+}
+
+/* ─── LAYOUT ──────────────────────────────────────────── */
 
 main {
     padding: 1.5rem;
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-    height: calc(100vh - 6rem);
-    overflow: hidden;
+    display: grid;
+    grid-template-columns: 2.25fr 0.75fr;
+    grid-template-rows: auto 1fr;
+    gap: 1.25rem;
+    height: calc(100vh - 4rem);
 }
 
 section {
-    flex: 1;
     text-align: center;
-    background-color: #f0f4ff;
-    box-shadow: 0 2px 8px #141b72;
-    border-radius: 1.5rem;
-    padding:0.75rem;
-    overflow-y: auto;
-    max-height: 91%;
-}
-
-#buteurs{
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+    position: relative;
     overflow: hidden;
 }
 
-#liste_buteurs {
-    display: flex;
-    gap: 1rem;
+section h2 {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--bg);
 }
 
-#matchs { flex: 0.75; }
-#classement { flex: 1.5; }
-#buteurs { flex: 0.75; }
+/* ─── MATCHS CAROUSEL ─────────────────────────────────── */
 
-.carte-joueur img {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 320px;
-}
-
-#btn-prev, #btn-next, #btn1-prev, #btn1-next {
-    background: #141b72;
-    color: white;
+#matchs {
+    grid-column: 1 / 3;
+    background: transparent;
     border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    font-size: 1rem;
-    cursor: pointer;
+    box-shadow: none;
+    padding: 0.25rem 0;
+    overflow: hidden;
+}
+
+#matchs::before { display: none; }
+
+#liste_matchs {
+    display: flex;
+    gap: 0.75rem;
+    animation: defilement-matchs 30s linear infinite;
+    width: max-content;
+}
+
+#liste_matchs:hover {
+    animation-play-state: paused;
 }
 
 .carte-match {
     display: flex;
+    flex: none;
+    min-width: 240px;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    background: white;
-    border-radius: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--navy);
+    border-radius: 0.85rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+}
+
+.carte-match:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
 }
 
 .equipe-home, .equipe-away {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
     width: 35%;
+}
+
+.equipe-home img, .equipe-away img {
+    width: 34px;
+    height: auto;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.equipe-home p, .equipe-away p {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--text);
+    text-align: center;
+    line-height: 1.3;
+    text-transform: uppercase;
 }
 
 .score-centre {
     text-align: center;
     width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.score-centre .heure {
+    font-size: 0.62rem;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.score-centre p:nth-child(2) {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+    line-height: 1;
+}
+
+.badge {
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.a-venir {
+    background: #eef2ff;
+    color: var(--navy-light);
+    border: 1px solid #c7d2f0;
+}
+
+.en-cours {
+    background: #fef2f2;
+    color: var(--red-light);
+    border: 1px solid #fecaca;
+    animation: pulse-live 1.8s ease-in-out infinite;
+}
+
+.termine {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
+
+@keyframes pulse-live {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.65; }
+}
+
+/* ─── CLASSEMENT GROUPES ──────────────────────────────── */
+
+#classement {
+    display: flex;
+    flex-direction: column;
+}
+
+#classement #liste_groupes {
+    flex: 1;
+    overflow: hidden;
 }
 
 #liste_groupes {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    align-items: start;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.6rem;
+    align-items: stretch;
+    align-content: stretch;
 }
 
 .carte-groupe {
-    display: block;
-    background: white;
-    border-radius: 0.75rem;
-    padding: 0.5rem;
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    border-radius: 0.65rem;
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(13,26,74,0.07);
+    display: flex;
+    flex-direction: column;
 }
 
 .carte-groupe h3 {
-    background: #141b72;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
     color: white;
-    border-radius: 0.5rem;
-    padding: 0.25rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    flex-shrink: 0;
 }
 
 .carte-equipe {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    padding: 0 0.4rem;
+    border-bottom: 1px solid #f1f3f9;
+    transition: background 0.12s;
+    flex: 1;
+}
+
+.carte-equipe:last-child {
+    border-bottom: none;
+}
+
+.carte-equipe:hover {
+    background: #f5f7ff;
+}
+
+.equipe-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.equipe-info img {
+    width: 18px;
+    height: auto;
+    border-radius: 2px;
+}
+
+.equipe-info p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.pts {
+    font-size: 0.62rem;
+    font-weight: 800;
+    color: var(--navy);
+    background: #eef2ff;
+    padding: 1px 7px;
+    border-radius: 999px;
+    white-space: nowrap;
+    border: 1px solid #c7d2f0;
+}
+
+/* ─── BUTEURS ─────────────────────────────────────────── */
+
+#buteurs {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 0.5rem;
-    padding: 0.25rem;
+}
+
+#liste_buteurs {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+}
+
+.carte-joueur {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.carte-joueur img {
+    width: 320px;
+    height: 340px;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.joueur-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 320px;
+    gap: 0.5rem;
+    margin-top: 2.3rem;
+    padding: 0 1.5rem;
+}
+
+.joueur-texte {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: left;
+}
+
+#nom_joueur {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+#pays_joueur {
+    font-size: 0.68rem;
+    color: var(--text-mid);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+
+#score_buteur {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--red);
+    letter-spacing: 0.03em;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+#score_buteur::after {
+    content: ' ⚽';
+    font-size: 1.1rem;
+}
+
+/* ─── BUTTONS ─────────────────────────────────────────── */
+
+.nav-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+}
+
+#btn-prev, #btn-next, #btn1-prev, #btn1-next {
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.12s, box-shadow 0.15s;
+    box-shadow: 0 2px 8px rgba(13,26,74,0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+#btn-prev:hover, #btn-next:hover, #btn1-prev:hover, #btn1-next:hover {
+    background: var(--navy-mid);
+    transform: scale(1.1);
+    box-shadow: 0 4px 14px rgba(13,26,74,0.35);
+}
+
+#btn-prev:active, #btn-next:active, #btn1-prev:active, #btn1-next:active {
+    transform: scale(0.94);
+}
+
+/* ─── ANIMATION MATCHS ────────────────────────────────── */
+
+@keyframes defilement-matchs {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
