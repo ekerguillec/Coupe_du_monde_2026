@@ -23,6 +23,9 @@ main {
     padding: 1.5rem;
     display: flex;
     gap: 2rem;
+    align-items: flex-start;
+    height: calc(100vh - 6rem);
+    overflow: hidden;
 }
 
 section {
@@ -32,6 +35,8 @@ section {
     box-shadow: 0 2px 8px #141b72;
     border-radius: 1.5rem;
     padding:0.75rem;
+    overflow-y: auto;
+    max-height: 91%;
 }
 
 #buteurs{
@@ -54,7 +59,7 @@ section {
     width: 320px;
 }
 
-#btn-prev, #btn-next {
+#btn-prev, #btn-next, #btn1-prev, #btn1-next {
     background: #141b72;
     color: white;
     border: none;
@@ -63,4 +68,57 @@ section {
     height: 36px;
     font-size: 1rem;
     cursor: pointer;
+}
+
+.carte-match {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 0.75rem;
+}
+
+.equipe-home, .equipe-away {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 35%;
+}
+
+.score-centre {
+    text-align: center;
+    width: 30%;
+}
+
+#liste_groupes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    align-items: start;
+}
+
+.carte-groupe {
+    display: block;
+    background: white;
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+}
+
+.carte-groupe h3 {
+    background: #141b72;
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.carte-equipe {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem;
 }
