@@ -469,3 +469,30 @@ section h2 {
 #btn-prev:active, #btn-next:active, #btn1-prev:active, #btn1-next:active {
     transform: scale(0.94);
 }
+
+
+#liste_groupes{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.groupe-card {
+    margin-top: 0.5rem;
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    box-shadow: var(--shadow);
+}
+
+table img {
+    width: 30px;
+}
+
+.Equipe{
+    display: flex;
+    align-items: center;
+}
+
+td, th { padding: 8 px;}

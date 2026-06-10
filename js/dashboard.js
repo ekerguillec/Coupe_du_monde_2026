@@ -1,4 +1,4 @@
-fetch('./wc2026_matches.json')
+fetch('../wc2026_matches.json')
   .then(res => res.json())
   .then(matches => {
         
