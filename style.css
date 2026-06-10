@@ -117,29 +117,22 @@ section h2 {
 
 #liste_matchs {
     display: flex;
-    gap: 0.75rem;
-    animation: defilement-matchs 30s linear infinite;
     width: max-content;
-}
-
-#liste_matchs:hover {
-    animation-play-state: paused;
 }
 
 .carte-match {
     display: flex;
+    flex-direction: column;
     flex: none;
-    min-width: 240px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.65rem 0.85rem;
+    min-width: 260px;
     background: var(--bg-section);
     border: 1px solid var(--border);
-    border-top: 3px solid var(--navy);
     border-radius: 0.85rem;
     box-shadow: var(--shadow);
+    overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: default;
+     margin-right: 0.75rem;
 }
 
 .carte-match:hover {
@@ -147,56 +140,104 @@ section h2 {
     box-shadow: var(--shadow-lg);
 }
 
+.carte-match-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3rem 0.6rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.carte-match-header .heure {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-mid);
+}
+
+.chaines-header {
+    display: flex;
+    gap: 3px;
+}
+.chaine {
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 999px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.chaine-bein {
+    background: #fff3e0;
+    color: #c45000;
+    border: 1px solid #ffcc80;
+}
+
+.chaine-m6 {
+    background: #e8f0fe;
+    color: #1a56c4;
+    border: 1px solid #93b4f7;
+}
+
+.carte-match-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 0.75rem;
+    gap: 0.5rem;
+}
+
 .equipe-home, .equipe-away {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
-    width: 35%;
+    gap: 3px;
+    width: 38%;
 }
 
 .equipe-home img, .equipe-away img {
-    width: 34px;
+    width: 28px;
     height: auto;
     border-radius: 2px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
 .equipe-home p, .equipe-away p {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     font-weight: 700;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
     color: var(--text);
     text-align: center;
-    line-height: 1.3;
+    line-height: 1.2;
     text-transform: uppercase;
+    word-break: break-word;
 }
 
-.score-centre {
-    text-align: center;
-    width: 30%;
+.carte-match-body {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 3px;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    gap: 0.3rem;
+    min-height: 80px;
 }
 
-.score-centre .heure {
-    font-size: 0.62rem;
-    color: var(--text-light);
-    font-weight: 600;
-}
-
-.score-centre p:nth-child(2) {
-    font-size: 1.4rem;
+.score {
+    font-size: 1.35rem;
     font-weight: 900;
     color: var(--navy);
     letter-spacing: 0.05em;
-    line-height: 1;
+    text-align: center;
+    flex-shrink: 0;
+    width: 24%;
+    white-space: nowrap;
 }
 
 .badge {
-    font-size: 0.58rem;
+    font-size: 0.7rem;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -222,11 +263,6 @@ section h2 {
     background: #f0fdf4;
     color: #16a34a;
     border: 1px solid #bbf7d0;
-}
-
-@keyframes pulse-live {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.65; }
 }
 
 /* ─── CLASSEMENT GROUPES ──────────────────────────────── */
@@ -432,11 +468,4 @@ section h2 {
 
 #btn-prev:active, #btn-next:active, #btn1-prev:active, #btn1-next:active {
     transform: scale(0.94);
-}
-
-/* ─── ANIMATION MATCHS ────────────────────────────────── */
-
-@keyframes defilement-matchs {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
 }
