@@ -67,15 +67,15 @@ fetch('../wc2026_matches.json')
                     </span>
                 </div>
                 <div class="carte-match-body">
-                    <div class="equipe-home">
+                    <a class="equipe-home equipe-link" href="./pages/pays.html?id=${match.home_team_id}">
                         <img src="https://flagcdn.com/w40/${isoCorrections[equipesParId[match.home_team_id].iso2.toLowerCase()] || equipesParId[match.home_team_id].iso2.toLowerCase()}.png">
                         <p>${traductions[match.home_team_name_en] || match.home_team_name_en}</p>
-                    </div>
+                    </a>
                     <p class="score">${match.home_score} - ${match.away_score}</p>
-                    <div class="equipe-away">
+                    <a class="equipe-away equipe-link" href="./pages/pays.html?id=${match.away_team_id}">
                         <img src="https://flagcdn.com/w40/${isoCorrections[equipesParId[match.away_team_id].iso2.toLowerCase()] || equipesParId[match.away_team_id].iso2.toLowerCase()}.png">
                         <p>${traductions[match.away_team_name_en] || match.away_team_name_en}</p>
-                    </div>
+                    </a>
                 </div>
             </div>
             `

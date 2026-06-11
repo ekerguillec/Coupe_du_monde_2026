@@ -25,7 +25,7 @@ Promise.all([
         groupe.teams.forEach(equipe => {
             const resultat = equipes.teams.find(element => element.id === equipe.team_id)
             lignes += `<tr>
-                <td class="Equipe"><img src="${resultat.flag}"> <span>${traductions[resultat.name_en] || resultat.name_en}</span></td>
+                <td class="Equipe"><a class="equipe-lien" href="./pays.html?id=${equipe.team_id}"><img src="${resultat.flag}"> <span>${traductions[resultat.name_en] || resultat.name_en}</span></a></td>
                 <td>${equipe.mp}</td>
                 <td>${equipe.w}</td>
                 <td>${equipe.d}</td>
