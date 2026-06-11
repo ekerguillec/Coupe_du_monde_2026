@@ -6,7 +6,7 @@ fetch('../wc2026_matches.json')
     const mois = String(d.getMonth() + 1).padStart(2,'0') // +1 car janvier = 0, février = 1, ...
     const jours = String(d.getDate()).padStart(2,'0') // padStart(2, '0') permet d'afficher 2 chiffres et que 6 soit sous la forme 06
     const annee = d.getFullYear()
-    const date_actuelle = '06/24/2026' // mois + '/' + jours + '/' + annee  //'06/11/2026' pour tester la fonction avec une date précise ; 
+    const date_actuelle = '06/25/2026' // mois + '/' + jours + '/' + annee  //'06/11/2026' pour tester la fonction avec une date précise ; 
     const duree_intervalle = 5000
 
     function afficherDateHeure() {
@@ -81,36 +81,53 @@ fetch('../wc2026_matches.json')
             `
         })
         const cartesOriginales = [...div.children]
-        cartesOriginales.forEach(carte => div.appendChild(carte.cloneNode(true)))
-        cartesOriginales.forEach(carte => div.appendChild(carte.cloneNode(true)))
-        cartesOriginales.forEach(carte => div.appendChild(carte.cloneNode(true)))
 
-// Double requestAnimationFrame = garantit que le DOM est peint avant de mesurer
-    requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-            const cartes = div.querySelectorAll('.carte-match')
-            const n = cartesOriginales.length
+            requestAnimationFrame(() => {
+                if (cartesOriginales.length === 0) return
 
-            // Distance exacte entre la 1ère carte et son doublon = le point de reset parfait
-            const largeur = cartes[n].getBoundingClientRect().left - cartes[0].getBoundingClientRect().left
+                const containerWidth = div.parentElement.offsetWidth
+                const firstCard = cartesOriginales[0]
+                const lastCard  = cartesOriginales[cartesOriginales.length - 1]
+                const originalWidth = lastCard.getBoundingClientRect().right - firstCard.getBoundingClientRect().left
 
-            let pos = 0
-            let pause = false
+                if (originalWidth <= containerWidth) {
+                    div.style.width = '100%'
+                    cartesOriginales.forEach(carte => {
+                        carte.style.flex = '1'
+                        carte.style.minWidth = '0'
+                    })
+                    return
+                }
 
-            div.addEventListener('mouseenter', () => pause = true)
-            div.addEventListener('mouseleave', () => pause = false)
+                // 1er clone pour mesurer le point de reset exact (inclut le margin-right du dernier)
+                cartesOriginales.forEach(carte => div.appendChild(carte.cloneNode(true)))
+                const allCartes = div.querySelectorAll('.carte-match')
+                const largeur = allCartes[cartesOriginales.length].getBoundingClientRect().left - allCartes[0].getBoundingClientRect().left
 
-            function animer() {
-                if (!pause) {
-                    pos += 0.5
-                    if (pos >= largeur) pos = 0
-                    div.style.transform = `translateX(-${pos}px)`
+                // Clones supplémentaires pour éviter le vide en fin de boucle
+                const clonesSupp = Math.max(0, Math.ceil(containerWidth / largeur) - 1)
+                for (let i = 0; i < clonesSupp; i++) {
+                    cartesOriginales.forEach(carte => div.appendChild(carte.cloneNode(true)))
+                }
+
+                let pos = 0
+                let pause = false
+
+                div.addEventListener('mouseenter', () => pause = true)
+                div.addEventListener('mouseleave', () => pause = false)
+
+                function animer() {
+                    if (!pause) {
+                        pos += 0.5
+                        if (pos >= largeur) pos = 0
+                        div.style.transform = `translateX(-${pos}px)`
+                    }
+                    requestAnimationFrame(animer)
                 }
                 requestAnimationFrame(animer)
-            }
-            requestAnimationFrame(animer)
+            })
         })
-    })
     })
 
     // Groupes + équipes

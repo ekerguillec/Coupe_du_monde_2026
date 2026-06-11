@@ -8,7 +8,18 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <h1> Classement générale </h1>
+    <header>
+        <div id="header">
+            <h1>Classement <span>CMD26</span></h1>
+        </div>
+        <button class="menu-btn" id="menu-btn" aria-label="Navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="menu-nav" id="menu-nav">
+            <a href="../index.html" class="menu-lien">📊 Dashboard</a>
+            <a href="./classement.html" class="menu-lien actif">🏆 Classement</a>
+        </nav>
+    </header>
     <div id="liste_groupes">
 
     </div>
@@ -33,5 +44,6 @@
 
 <script src="../js/traductions.js"></script>
 <script src="../js/classement.js"></script>
+<script src="../js/menu.js"></script>
 </body>
 </html>
