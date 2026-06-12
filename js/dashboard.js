@@ -6,7 +6,7 @@ fetch('../wc2026_matches.json')
     const mois = String(d.getMonth() + 1).padStart(2,'0') // +1 car janvier = 0, février = 1, ...
     const jours = String(d.getDate()).padStart(2,'0') // padStart(2, '0') permet d'afficher 2 chiffres et que 6 soit sous la forme 06
     const annee = d.getFullYear()
-    const date_actuelle = '06/12/2026' // mois + '/' + jours + '/' + annee  //'06/11/2026' pour tester la fonction avec une date précise ; 
+    const date_actuelle = '06/13/2026' // mois + '/' + jours + '/' + annee  //'06/11/2026' pour tester la fonction avec une date précise ; 
     const duree_intervalle = 5000
 
     function afficherDateHeure() {
@@ -25,7 +25,90 @@ fetch('../wc2026_matches.json')
     ])
     .then(([games, equipes]) => {
 
+        console.log(games)
+
+        function parseScorers(str) {
+            if (str === 'null') return []
+            let normalise = str.replace(/[\u201C\u201D]/g, '"')
+            let nettoye = normalise.slice(1, -1)
+            let tableau = nettoye.split('","').map(nom => nom.replace('"', '').replace('"', '').replace(/\s\d+'/, ''))
+            console.log(tableau)
+            return tableau
+        }  
+        console.log(parseScorers(games.games[0].home_scorers))
+        console.log(parseScorers(games.games[0].home_scorers))
         console.log(games.games.map(g => g.id + ' — ' + g.home_team_name_en + ' vs ' + g.away_team_name_en))
+
+        let compteur = {}
+        games.games.forEach(match => {
+            // parser les scorers du match
+            const buteursHome = parseScorers(match.home_scorers)
+            const buteursAway = parseScorers(match.away_scorers)
+            // pour chaque buteur, ajouter 1 au compteur
+            buteursHome.forEach(nom => {
+                compteur[nom] = (compteur[nom] || 0) + 1
+            })
+            buteursAway.forEach(nom => {
+                compteur[nom] = (compteur[nom] || 0) + 1
+            })
+        })
+        console.log(compteur)
+        const classement = Object.entries(compteur).sort((a, b) => b[1] - a[1])
+        console.log(classement)
+
+        // Buteurs
+
+        const divButeurs = document.getElementById('liste_buteurs')
+            classement.forEach(joueur => {
+                const joueurData = listeButeurs.find(b => b.nomAPI === joueur[0])
+                divButeurs.innerHTML += `
+                    <div class="carte-joueur">
+                        ${joueurData ? `<img src="${joueurData.image}">` : ''}
+                        <div class="joueur-info">
+                            <div class="joueur-texte">
+                                <p id="nom_joueur">${joueur[0]}</p>
+                                <p id="pays_joueur">${joueurData ? joueurData.pays : ''}</p>
+                            </div>
+                            <p id="score_buteur">${joueur[1]}</p>
+                        </div>
+                    </div>`
+                })
+
+        let indexActuel = 0
+
+        function afficherJoueur(index) {
+            const cartes = document.querySelectorAll('.carte-joueur')
+            cartes.forEach(carte => carte.style.display = 'none')
+            cartes[index].style.display = 'block'
+        }
+
+        let intervalActuel = setInterval(() => {
+            indexActuel = (indexActuel + 1) % classement.length
+            afficherJoueur(indexActuel)
+        }, duree_intervalle)
+
+        document.getElementById('btn-next').addEventListener('click', () => {
+            indexActuel = (indexActuel + 1) % classement.length
+            clearInterval(intervalActuel)
+            intervalActuel = setInterval(() => {
+                indexActuel = (indexActuel + 1) % classement.length
+                afficherJoueur(indexActuel)
+            }, duree_intervalle)
+            afficherJoueur(indexActuel)
+        })
+
+        document.getElementById('btn-prev').addEventListener('click', () => {
+            indexActuel = (indexActuel - 1 + classement.length) % classement.length
+            clearInterval(intervalActuel)
+            intervalActuel = setInterval(() => {
+                indexActuel = (indexActuel - 1) % classement.length
+                afficherJoueur(indexActuel)
+            }, duree_intervalle)
+            afficherJoueur(indexActuel)
+        })
+
+        afficherJoueur(indexActuel)
+
         const equipesParId = {}
         equipes.teams.forEach(equipe => {
             equipesParId[equipe.id] = equipe
@@ -143,18 +226,18 @@ fetch('../wc2026_matches.json')
 
         console.log(groupes.groups[0].teams[0]);
         const divGroupes = document.getElementById('liste_groupes')
-        groupes.groups.forEach(groupe => {
+        groupes.groups.sort((a, b) => a.name.localeCompare(b.name)).forEach(groupe => {
             let html = `<div class="carte-groupe"><h3>Groupe ${groupe.name}</h3>`
             groupe.teams.forEach(equipe => {
                 let point = 0
                 if (equipe.pts==0 || equipe.pts ==1){ point = "pt"}
                 else {point = "pts"}
-                html += `<div class="carte-equipe">
+                html += `<a class="carte-equipe" href="./pages/pays.html?id=${equipe.team_id}">
                     <div class="equipe-info"> <img src="https://flagcdn.com/w40/${(isoCorrections[equipesParId[equipe.team_id].iso2.toLowerCase()] || equipesParId[equipe.team_id].iso2).toLowerCase()}.png">
                     <p>${traductions[equipesParId[equipe.team_id].name_en] || equipesParId[equipe.team_id].name_en}</p>
                     </div>
                     <p class="pts">${equipe.pts} ${point}</p>
-                </div>`
+                </a>`
             })
             html += `</div>`
             divGroupes.innerHTML += html
@@ -197,48 +280,7 @@ fetch('../wc2026_matches.json')
         })
     }
 
-    // Buteurs
-
-    const divButeurs = document.getElementById('liste_buteurs')
-        listeButeurs.forEach(joueur => {
-            divButeurs.innerHTML += `<div class="carte-joueur"><img src="${joueur.image}"><div class="joueur-info"><div class="joueur-texte"><p id="nom_joueur">${joueur.nom}</p><p id="pays_joueur">${joueur.pays}</p></div><p id="score_buteur">${joueur.buts}</p></div></div>`
-    })
-
-    let indexActuel = 0
-
-    function afficherJoueur(index) {
-        const cartes = document.querySelectorAll('.carte-joueur')
-        cartes.forEach(carte => carte.style.display = 'none')
-        cartes[index].style.display = 'block'
-    }
-
-    let intervalActuel = setInterval(() => {
-        indexActuel = (indexActuel + 1) % listeButeurs.length
-        afficherJoueur(indexActuel)
-    }, duree_intervalle)
-
-    document.getElementById('btn-next').addEventListener('click', () => {
-        indexActuel = (indexActuel + 1) % listeButeurs.length
-        clearInterval(intervalActuel)
-        intervalActuel = setInterval(() => {
-            indexActuel = (indexActuel + 1) % listeButeurs.length
-            afficherJoueur(indexActuel)
-        }, duree_intervalle)
-        afficherJoueur(indexActuel)
-    })
-
-    document.getElementById('btn-prev').addEventListener('click', () => {
-        indexActuel = (indexActuel - 1 + listeButeurs.length) % listeButeurs.length
-        clearInterval(intervalActuel)
-        intervalActuel = setInterval(() => {
-            indexActuel = (indexActuel - 1) % listeButeurs.length
-            afficherJoueur(indexActuel)
-        }, duree_intervalle)
-        afficherJoueur(indexActuel)
-    })
-
-    afficherJoueur(indexActuel)
-
+    
 
     fetch('http://localhost:3000/api/teams').then(r => r.json()).then(d => console.log(d.teams[0]))
   })
