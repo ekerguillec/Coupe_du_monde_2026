@@ -120,11 +120,28 @@ function ouvrirModal(joueur) {
 
 // ─── RENDER PAYS ──────────────────────────────────────
 
-function renderPays(equipe) {
+function renderPays(equipe, sortedTeams) {
     const data = effectifs[equipe.name_en] || null
     const nomFr = (typeof traductions !== 'undefined' && traductions[equipe.name_en]) || equipe.name_en
 
+    const base = window.location.pathname.includes('/pages/') ? '' : './pages/'
+    let prevBtn = '', nextBtn = ''
+    if (sortedTeams) {
+        const idx = sortedTeams.findIndex(t => t.id === equipe.id)
+        if (idx > 0) {
+            const prev = sortedTeams[idx - 1]
+            const nomPrev = (typeof traductions !== 'undefined' && traductions[prev.name_en]) || prev.name_en
+            prevBtn = `<a class="pays-nav-btn pays-nav-prev" href="${base}pays.html?id=${prev.id}" title="${nomPrev}">‹</a>`
+        }
+        if (idx < sortedTeams.length - 1) {
+            const next = sortedTeams[idx + 1]
+            const nomNext = (typeof traductions !== 'undefined' && traductions[next.name_en]) || next.name_en
+            nextBtn = `<a class="pays-nav-btn pays-nav-next" href="${base}pays.html?id=${next.id}" title="${nomNext}">›</a>`
+        }
+    }
+
     const heroHtml = `
+        ${prevBtn}${nextBtn}
         <div class="pays-hero">
             <img class="pays-drapeau" src="${equipe.flag}" alt="${nomFr}">
             <div>
@@ -285,7 +302,12 @@ fetch('http://localhost:3000/api/teams')
             contenu.innerHTML = `<div class="pays-erreur">Équipe introuvable (id: ${teamId})</div>`
             return
         }
-        renderPays(equipe)
+        const sorted = [...equipes.teams].sort((a, b) => {
+            const na = (typeof traductions !== 'undefined' && traductions[a.name_en]) || a.name_en
+            const nb = (typeof traductions !== 'undefined' && traductions[b.name_en]) || b.name_en
+            return na.localeCompare(nb, 'fr')
+        })
+        renderPays(equipe, sorted)
     })
     .catch(() => {
         contenu.innerHTML = `<div class="pays-erreur">Impossible de charger les données.</div>`
