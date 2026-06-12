@@ -13,3 +13,4 @@ npm-debug.log*
 
 # Graphify
 graphify-out/.claude/worktrees/
+.claude/

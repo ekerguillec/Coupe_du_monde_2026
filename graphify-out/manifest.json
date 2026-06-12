@@ -1,0 +1,47 @@
+{
+  "/Applications/XAMPP/xamppfiles/htdocs/CDM26/buteur.js": {
+    "mtime": 1780675999.6064692,
+    "ast_hash": "059555719089c8e64f4eade783528e1a",
+    "semantic_hash": "059555719089c8e64f4eade783528e1a"
+  },
+  "/Applications/XAMPP/xamppfiles/htdocs/CDM26/isocorrection.js": {
+    "mtime": 1780711210.4392123,
+    "ast_hash": "92b12d304ad7d35987fba63cf45a3f98",
+    "semantic_hash": "92b12d304ad7d35987fba63cf45a3f98"
+  },
+  "/Applications/XAMPP/xamppfiles/htdocs/CDM26/package.json": {
+    "mtime": 1780624624.5466921,
+    "ast_hash": "9a1594e834915f8bf28deb193a5e24d3",
+    "semantic_hash": "9a1594e834915f8bf28deb193a5e24d3"
+  },
+  "/Applications/XAMPP/xamppfiles/htdocs/CDM26/script.js": {
+    "mtime": 1780714403.513351,
+    "ast_hash": "7e40486f0465cc1016c2030c0556a817",
+    "semantic_hash": "7e40486f0465cc1016c2030c0556a817"
+  },
+  "/Applications/XAMPP/xamppfiles/htdocs/CDM26/server.js": {
+    "mtime": 1780624681.0034437,
+    "ast_hash": "3867c03c3271214ce7d74183b6238ecc",
+    "semantic_hash": "3867c03c3271214ce7d74183b6238ecc"
+  },
+  "/Applications/XAMPP/xamppfiles/htdocs/CDM26/traductions.js": {
+    "mtime": 1780625359.3085504,
+    "ast_hash": "640bee9008176ac7b7cfeddd5bea14c7",
+    "semantic_hash": "640bee9008176ac7b7cfeddd5bea14c7"
+  },
+  "/Applications/XAMPP/xamppfiles/htdocs/CDM26/index.html": {
+    "mtime": 1780713347.59991,
+    "ast_hash": "55fbc9b9a91cc913ddbece1db15dfa83",
+    "semantic_hash": "55fbc9b9a91cc913ddbece1db15dfa83"
+  },
+  "/Applications/XAMPP/xamppfiles/htdocs/CDM26/images/CR7.png": {
+    "mtime": 1780670881.634012,
+    "ast_hash": "aa14f76caf6f58164de3aafffea7e873",
+    "semantic_hash": "aa14f76caf6f58164de3aafffea7e873"
+  },
+  "/Applications/XAMPP/xamppfiles/htdocs/CDM26/images/Neymar.png": {
+    "mtime": 1780670889.9635582,
+    "ast_hash": "56e68365c91c5eca4e0ba3e823f68b8f",
+    "semantic_hash": "56e68365c91c5eca4e0ba3e823f68b8f"
+  }
+}
