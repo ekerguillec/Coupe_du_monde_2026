@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pays — CDM26</title>
+    <title>Feuille de match — CDM26</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <header>
-        <div id="header"><h1>Pays <span>CDM26</span></h1></div>
+        <div id="header">
+            <h1>Feuille de match <span>CDM26</span></h1>
+        </div>
         <button class="menu-btn" id="menu-btn" aria-label="Navigation">
             <span></span><span></span><span></span>
         </button>
         <nav class="menu-nav" id="menu-nav">
             <a href="../index.html" class="menu-lien">📊 Dashboard</a>
             <a href="./classement.html" class="menu-lien">🏆 Classement</a>
-            <a href="./feuille-match.html" class="menu-lien">⚽ Feuille de match</a>
+            <a href="./feuille-match.html" class="menu-lien actif">⚽ Feuille de match</a>
             <div class="menu-lien menu-pays-wrapper">
                 <a href="./pays.html" class="menu-pays-lien">🌍 Pays</a>
                 <span class="menu-pays-toggle menu-fleche" id="menu-pays-toggle">›</span>
@@ -24,9 +26,16 @@
             <div class="menu-sous-nav" id="menu-sous-nav"></div>
         </nav>
     </header>
+    <button id="btn-refresh">🔄 Actualiser</button>
+    <section id="card-score">
 
-    <div id="pays-contenu"></div>
+    </section>
+    <section id="card-statslive">
 
+    </section>
+    <section id="card-onze-depart">
+
+    </section>
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
@@ -46,10 +55,8 @@
         </div>
     </footer>
 
-    <script src="../js/isocorrection.js"></script>
     <script src="../js/traductions.js"></script>
-    <script src="../js/effectifs.js"></script>
-    <script src="../js/pays.js"></script>
+    <script src="../js/feuille-match.js"></script>
     <script src="../js/menu.js"></script>
 </body>
 </html>

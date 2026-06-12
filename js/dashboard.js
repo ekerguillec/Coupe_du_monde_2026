@@ -6,7 +6,7 @@ fetch('../wc2026_matches.json')
     const mois = String(d.getMonth() + 1).padStart(2,'0') // +1 car janvier = 0, février = 1, ...
     const jours = String(d.getDate()).padStart(2,'0') // padStart(2, '0') permet d'afficher 2 chiffres et que 6 soit sous la forme 06
     const annee = d.getFullYear()
-    const date_actuelle = '06/13/2026' // mois + '/' + jours + '/' + annee  //'06/11/2026' pour tester la fonction avec une date précise ; 
+    const date_actuelle = '06/12/2026' // mois + '/' + jours + '/' + annee  //'06/11/2026' pour tester la fonction avec une date précise ; 
     const duree_intervalle = 5000
 
     function afficherDateHeure() {
