@@ -6,7 +6,7 @@ fetch('../wc2026_matches.json')
     const mois = String(d.getMonth() + 1).padStart(2,'0') // +1 car janvier = 0, février = 1, ...
     const jours = String(d.getDate()).padStart(2,'0') // padStart(2, '0') permet d'afficher 2 chiffres et que 6 soit sous la forme 06
     const annee = d.getFullYear()
-    const date_actuelle = '06/12/2026' // mois + '/' + jours + '/' + annee  //'06/11/2026' pour tester la fonction avec une date précise ; 
+    const date_actuelle = `06/13/2026` // mois + '/' + jours + '/' + annee  //'06/11/2026' pour tester la fonction avec une date précise ; 
     const duree_intervalle = 5000
 
     function afficherDateHeure() {
@@ -27,52 +27,66 @@ fetch('../wc2026_matches.json')
 
         console.log(games)
 
+        // Retourne { buts: [...], csc: [...] }
         function parseScorers(str) {
-            if (str === 'null') return []
-            let normalise = str.replace(/[\u201C\u201D]/g, '"')
-            let nettoye = normalise.slice(1, -1)
-            let tableau = nettoye.split('","').map(nom => nom.replace('"', '').replace('"', '').replace(/\s\d+'/, ''))
-            console.log(tableau)
-            return tableau
-        }  
-        console.log(parseScorers(games.games[0].home_scorers))
-        console.log(parseScorers(games.games[0].home_scorers))
-        console.log(games.games.map(g => g.id + ' — ' + g.home_team_name_en + ' vs ' + g.away_team_name_en))
+            if (!str || str === 'null') return { buts: [], csc: [] }
+            const normalise = str.replace(/[\u201C\u201D]/g, '"')
+            const entrees = normalise.slice(1, -1).split('","')
+            const buts = [], csc = []
+            entrees.forEach(entree => {
+                const raw = entree.replace(/"/g, '').trim()
+                const estCSC = /\(OG\)/i.test(raw)
+                const nom = raw
+                    .replace(/\s?\+?\d+['\u2032]/g, '')
+                    .replace(/\s?\([^)]*\)/gi, '')
+                    .trim()
+                if (nom) estCSC ? csc.push(nom) : buts.push(nom)
+            })
+            return { buts, csc }
+        }
 
-        let compteur = {}
+        let compteur = {}, compteurCSC = {}
         games.games.forEach(match => {
-            // parser les scorers du match
-            const buteursHome = parseScorers(match.home_scorers)
-            const buteursAway = parseScorers(match.away_scorers)
-            // pour chaque buteur, ajouter 1 au compteur
-            buteursHome.forEach(nom => {
-                compteur[nom] = (compteur[nom] || 0) + 1
-            })
-            buteursAway.forEach(nom => {
-                compteur[nom] = (compteur[nom] || 0) + 1
-            })
+            const home = parseScorers(match.home_scorers)
+            const away = parseScorers(match.away_scorers)
+            ;[...home.buts, ...away.buts].forEach(nom => { compteur[nom]    = (compteur[nom]    || 0) + 1 })
+            ;[...home.csc,  ...away.csc ].forEach(nom => { compteurCSC[nom] = (compteurCSC[nom] || 0) + 1 })
         })
-        console.log(compteur)
-        const classement = Object.entries(compteur).sort((a, b) => b[1] - a[1])
-        console.log(classement)
+
+        const classement    = Object.entries(compteur).sort((a, b) => b[1] - a[1])
+        const classementCSC = Object.entries(compteurCSC).sort((a, b) => b[1] - a[1])
 
         // Buteurs
-
         const divButeurs = document.getElementById('liste_buteurs')
-            classement.forEach(joueur => {
-                const joueurData = listeButeurs.find(b => b.nomAPI === joueur[0])
-                divButeurs.innerHTML += `
-                    <div class="carte-joueur">
-                        ${joueurData ? `<img src="${joueurData.image}">` : ''}
-                        <div class="joueur-info">
-                            <div class="joueur-texte">
-                                <p id="nom_joueur">${joueur[0]}</p>
-                                <p id="pays_joueur">${joueurData ? joueurData.pays : ''}</p>
-                            </div>
-                            <p id="score_buteur">${joueur[1]}</p>
+        classement.forEach(joueur => {
+            const joueurData = listeButeurs.find(b => b.nomAPI === joueur[0])
+            divButeurs.innerHTML += `
+                <div class="carte-joueur">
+                    ${joueurData ? `<img src="${joueurData.image}">` : ''}
+                    <div class="joueur-info">
+                        <div class="joueur-texte">
+                            <p id="nom_joueur">${joueurData ? joueurData.nom : joueur[0]}</p>
+                            <p id="pays_joueur">${joueurData ? joueurData.pays : ''}</p>
                         </div>
-                    </div>`
-                })
+                        <p id="score_buteur">${joueur[1]}</p>
+                    </div>
+                    ${classementCSC.length ? `<p class="csc-liste">${classementCSC.map(([n, c]) => n + (c > 1 ? ' ×' + c : '') + ' (CSC)').join(' · ')}</p>` : ''}
+                </div>`
+        })
+
+        // Carte CSC en fin de carrousel
+        if (classementCSC.length) {
+            divButeurs.innerHTML += `
+                <div class="carte-joueur carte-csc">
+                    <div class="joueur-info">
+                        <div class="joueur-texte">
+                            <p id="nom_joueur">Contre son camp</p>
+                            <p id="pays_joueur">&nbsp;</p>
+                        </div>
+                    </div>
+                    <p class="csc-liste">${classementCSC.map(([n, c]) => n + (c > 1 ? ' ×' + c : '')).join(' · ')}</p>
+                </div>`
+        }
 
         let indexActuel = 0
 
