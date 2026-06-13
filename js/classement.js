@@ -11,8 +11,8 @@ afficherDateHeure()
 setInterval(afficherDateHeure, 1000)
 
 Promise.all([
-    fetch('http://localhost:3000/api/groups').then(res => res.json()),
-    fetch('http://localhost:3000/api/teams').then(res => res.json())
+    apiFetch('groups'),
+    apiFetch('teams')
 ])
 .then(([groupes, equipes]) => {
     const table = document.getElementById('liste_groupes')
@@ -22,7 +22,7 @@ Promise.all([
     groupes.groups.forEach(groupe => {
         let lignes = ''
 
-        groupe.teams.forEach(equipe => {
+        groupe.teams.sort((a, b) => b.pts - a.pts || b.gd - a.gd).forEach(equipe => {
             const resultat = equipes.teams.find(element => element.id === equipe.team_id)
             lignes += `<tr>
                 <td class="Equipe"><a class="equipe-lien" href="./pays.html?id=${equipe.team_id}"><img src="${resultat.flag}"> <span>${traductions[resultat.name_en] || resultat.name_en}</span></a></td>

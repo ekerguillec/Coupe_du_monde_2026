@@ -28,14 +28,23 @@ async function authenticate() {
     console.log('Authentifié, token obtenu')
 }
 
+const apiCache = {}
+const API_CACHE_TTL = 60 * 1000 // 60 secondes
+
 app.get('/api/:endpoint', async (req, res) => {
-    const response = await fetch(`https://worldcup26.ir/get/${req.params.endpoint}`, {
+    const key = req.params.endpoint
+    const now = Date.now()
+    if (apiCache[key] && now - apiCache[key].ts < API_CACHE_TTL) {
+        return res.json(apiCache[key].data)
+    }
+    const response = await fetch(`https://worldcup26.ir/get/${key}`, {
         headers: { 'Authorization': 'Bearer ' + token }
     })
     const text = await response.text()
-    console.log('Réponse API:', text.substring(0, 200))
     try {
-        res.json(JSON.parse(text))
+        const data = JSON.parse(text)
+        apiCache[key] = { data, ts: now }
+        res.json(data)
     } catch {
         res.status(500).send(text)
     }

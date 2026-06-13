@@ -23,8 +23,7 @@ document.addEventListener('click', e => {
 
 function chargerEquipes() {
     if (!sousNav || sousNav.childElementCount > 0) return
-    fetch('http://localhost:3000/api/teams')
-        .then(r => r.json())
+    apiFetch('teams')
         .then(data => {
             const sorted = [...data.teams].sort((a, b) => {
                 const na = (typeof traductions !== 'undefined' && traductions[a.name_en]) || a.name_en

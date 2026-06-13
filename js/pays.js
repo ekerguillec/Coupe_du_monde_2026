@@ -248,8 +248,7 @@ function renderPays(equipe, sortedTeams) {
         })
     })
 
-    fetch('http://localhost:3000/api/groups')
-        .then(r => r.json())
+    apiFetch('groups')
         .then(groupes => {
             groupes.groups.forEach(groupe => {
                 const teamData = groupe.teams.find(t => t.team_id === equipe.id)
@@ -293,8 +292,7 @@ function renderListe(equipes) {
 
 // ─── INIT ─────────────────────────────────────────────
 
-fetch('http://localhost:3000/api/teams')
-    .then(r => r.json())
+apiFetch('teams')
     .then(equipes => {
         if (!teamId) { renderListe(equipes); return }
         const equipe = equipes.teams.find(t => t.id === teamId)

@@ -286,6 +286,7 @@ function renderSchedule(matches) {
         if (!grouped[m.date]) grouped[m.date] = []
         grouped[m.date].push(m)
     })
+    Object.values(grouped).forEach(jour => jour.sort((a, b) => a.heure.localeCompare(b.heure)))
     const sortedDates = Object.keys(grouped).sort()
     const display = [
         ...sortedDates.filter(d => d < today).reverse().slice(0, 3).reverse(),

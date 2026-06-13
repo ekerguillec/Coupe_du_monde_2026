@@ -6,7 +6,7 @@ fetch('../wc2026_matches.json')
     const mois = String(d.getMonth() + 1).padStart(2,'0') // +1 car janvier = 0, février = 1, ...
     const jours = String(d.getDate()).padStart(2,'0') // padStart(2, '0') permet d'afficher 2 chiffres et que 6 soit sous la forme 06
     const annee = d.getFullYear()
-    const date_actuelle = `06/13/2026` // mois + '/' + jours + '/' + annee  //'06/11/2026' pour tester la fonction avec une date précise ; 
+    const date_actuelle = mois + '/' + jours + '/' + annee // mois + '/' + jours + '/' + annee  //'06/11/2026' pour tester la fonction avec une date précise ; 
     const duree_intervalle = 5000
 
     function afficherDateHeure() {
@@ -20,12 +20,12 @@ fetch('../wc2026_matches.json')
 
     // Games + équipes
     Promise.all([
-        fetch('http://localhost:3000/api/games').then(res => res.json()),
-        fetch('http://localhost:3000/api/teams').then(res => res.json())
+        apiFetch('games'),
+        apiFetch('teams')
     ])
     .then(([games, equipes]) => {
 
-        console.log(games)
+
 
         // Retourne { buts: [...], csc: [...] }
         function parseScorers(str) {
@@ -53,40 +53,31 @@ fetch('../wc2026_matches.json')
             ;[...home.csc,  ...away.csc ].forEach(nom => { compteurCSC[nom] = (compteurCSC[nom] || 0) + 1 })
         })
 
-        const classement    = Object.entries(compteur).sort((a, b) => b[1] - a[1])
-        const classementCSC = Object.entries(compteurCSC).sort((a, b) => b[1] - a[1])
+        // Fusionner buts + CSC : tous les noms qui apparaissent dans l'un ou l'autre
+        const tousLesNoms = new Set([...Object.keys(compteur), ...Object.keys(compteurCSC)])
+        const classement = [...tousLesNoms]
+            .map(nom => ({ nom, buts: compteur[nom] || 0, csc: compteurCSC[nom] || 0 }))
+            .sort((a, b) => b.buts - a.buts || b.csc - a.csc)
 
         // Buteurs
         const divButeurs = document.getElementById('liste_buteurs')
         classement.forEach(joueur => {
-            const joueurData = listeButeurs.find(b => b.nomAPI === joueur[0])
+            const joueurData = listeButeurs.find(b => b.nomAPI === joueur.nom)
             divButeurs.innerHTML += `
                 <div class="carte-joueur">
                     ${joueurData ? `<img src="${joueurData.image}">` : ''}
                     <div class="joueur-info">
                         <div class="joueur-texte">
-                            <p id="nom_joueur">${joueurData ? joueurData.nom : joueur[0]}</p>
+                            <p id="nom_joueur">${joueurData ? joueurData.nom : joueur.nom}</p>
                             <p id="pays_joueur">${joueurData ? joueurData.pays : ''}</p>
                         </div>
-                        <p id="score_buteur">${joueur[1]}</p>
-                    </div>
-                    ${classementCSC.length ? `<p class="csc-liste">${classementCSC.map(([n, c]) => n + (c > 1 ? ' ×' + c : '') + ' (CSC)').join(' · ')}</p>` : ''}
-                </div>`
-        })
-
-        // Carte CSC en fin de carrousel
-        if (classementCSC.length) {
-            divButeurs.innerHTML += `
-                <div class="carte-joueur carte-csc">
-                    <div class="joueur-info">
-                        <div class="joueur-texte">
-                            <p id="nom_joueur">Contre son camp</p>
-                            <p id="pays_joueur">&nbsp;</p>
+                        <div class="score-buteur-bloc">
+                            <p id="score_buteur">${joueur.buts}</p>
+                            ${joueur.csc ? `<p class="csc-tag">${joueur.csc} CSC</p>` : ''}
                         </div>
                     </div>
-                    <p class="csc-liste">${classementCSC.map(([n, c]) => n + (c > 1 ? ' ×' + c : '')).join(' · ')}</p>
                 </div>`
-        }
+        })
 
         let indexActuel = 0
 
@@ -140,6 +131,7 @@ fetch('../wc2026_matches.json')
         // Remplacer le .filter() et le calcul de heure :
         games.games
         .filter(match => matchesParId[match.id]?.date === dateJSON)
+        .sort((a, b) => matchesParId[a.id].heure.localeCompare(matchesParId[b.id].heure))
         .forEach(match => {
             const matchJSON = matchesParId[match.id]
             const heure = matchesParId[match.id].heure
@@ -229,8 +221,8 @@ fetch('../wc2026_matches.json')
 
     // Groupes + équipes
     Promise.all([
-        fetch('http://localhost:3000/api/groups').then(res => res.json()),
-        fetch('http://localhost:3000/api/teams').then(res => res.json())
+        apiFetch('groups'),
+        apiFetch('teams')
     ])
     .then(([groupes, equipes]) => {
         const equipesParId = {}
@@ -238,11 +230,10 @@ fetch('../wc2026_matches.json')
             equipesParId[equipe.id] = equipe
         })
 
-        console.log(groupes.groups[0].teams[0]);
         const divGroupes = document.getElementById('liste_groupes')
         groupes.groups.sort((a, b) => a.name.localeCompare(b.name)).forEach(groupe => {
             let html = `<div class="carte-groupe"><h3>Groupe ${groupe.name}</h3>`
-            groupe.teams.forEach(equipe => {
+            groupe.teams.sort((a, b) => b.pts - a.pts).forEach(equipe => {
                 let point = 0
                 if (equipe.pts==0 || equipe.pts ==1){ point = "pt"}
                 else {point = "pts"}
@@ -296,5 +287,4 @@ fetch('../wc2026_matches.json')
 
     
 
-    fetch('http://localhost:3000/api/teams').then(r => r.json()).then(d => console.log(d.teams[0]))
   })

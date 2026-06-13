@@ -392,24 +392,18 @@ section h2 {
     object-position: center bottom;
 }
 
-.csc-liste {
-    font-size: 0.62rem;
-    color: var(--text-light);
-    text-align: center;
-    max-width: 300px;
-    line-height: 1.4;
+.score-buteur-bloc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
 }
 
-.carte-csc .joueur-info {
-    margin-top: 0;
-}
-
-.carte-csc #nom_joueur {
-    font-size: 0.72rem;
+.csc-tag {
+    font-size: 0.6rem;
     font-weight: 700;
-    color: var(--text-mid);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
 }
 
 .joueur-info {
