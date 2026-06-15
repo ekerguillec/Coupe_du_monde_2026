@@ -37,7 +37,7 @@ function renderList(matches) {
         <h3 class="res-day-title">${capitalize(fmtDate(date))}</h3>
         <div class="res-cards">
             ${grouped[date].map(m => {
-                const detailUrl = `./feuille-match.html?id=${m.matchId}&home=${encodeURIComponent(m.home)}&away=${encodeURIComponent(m.away)}`
+                const detailUrl = `./feuille-match.html?id=${m.matchId}&home=${encodeURIComponent(m.home)}&away=${encodeURIComponent(m.away)}&sh=${m.scoreHome ?? ''}&sa=${m.scoreAway ?? ''}&st=3&from=resultats`
                 return `
                 <a href="${detailUrl}" class="res-card">
                     <span class="res-time">${kickoffToParisTime(m.kickoff)}</span>

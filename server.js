@@ -1,4 +1,5 @@
-require('dotenv').config()
+require('dotenv').config({ override: true })
+console.log('RAPIDAPI_KEY:', process.env.RAPIDAPI_KEY?.length, 'chars —', JSON.stringify(process.env.RAPIDAPI_KEY))
 const express = require('express')
 const app = express()
 
@@ -57,6 +58,23 @@ authenticate().then(() => {
 
 const fs = require('fs')
 const path = require('path')
+
+const MATCH_CACHE_DIR = path.join(__dirname, 'match_cache')
+if (!fs.existsSync(MATCH_CACHE_DIR)) fs.mkdirSync(MATCH_CACHE_DIR, { recursive: true })
+
+function saveMatchToDisk(id, combined) {
+    const hasData = combined.stats?.length || combined.lineups || combined.commentary?.incidents?.length
+    if (!hasData) return
+    try { fs.writeFileSync(path.join(MATCH_CACHE_DIR, `${id}.json`), JSON.stringify(combined)) } catch {}
+}
+
+function loadMatchFromDisk(id) {
+    try {
+        const saved = JSON.parse(fs.readFileSync(path.join(MATCH_CACHE_DIR, `${id}.json`), 'utf8'))
+        const hasData = saved.stats?.length || saved.lineups || saved.commentary?.incidents?.length
+        return hasData ? saved : null
+    } catch { return null }
+}
 
 const RAPIDAPI_HEADERS = {
     'x-rapidapi-key': process.env.RAPIDAPI_KEY,
@@ -118,11 +136,12 @@ app.get('/rapid/wc/draw-enriched', async (req, res) => {
 app.get('/rapid/wc/finished', async (req, res) => {
     try {
         const localMatches = JSON.parse(fs.readFileSync(path.join(__dirname, 'wc2026_matches.json'), 'utf8'))
+        const base = 'https://world-cup-2026-live-api.p.rapidapi.com'
         const [drawGroup, drawKo] = await Promise.all([
-            fetch('https://world-cup-2026-live-api.p.rapidapi.com/wc/draw?stage=group', { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({ data: [] })),
-            fetch('https://world-cup-2026-live-api.p.rapidapi.com/wc/draw?stage=ko',    { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({ data: [] })),
+            fetch(`${base}/wc/draw?stage=group`, { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({ data: [] })),
+            fetch(`${base}/wc/draw?stage=ko`,    { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({ data: [] })),
         ])
-        const finished = [...(drawGroup.data || []), ...(drawKo.data || [])].filter(m => m.status === 3)
+        const finished = [...(drawGroup.data || []), ...(drawKo.data || [])].filter(m => m.status === 3 || m.status === 43)
         const enriched = finished.map(m => {
             let home = m.home || '', away = m.away || ''
             const kick = m.kickoff?.slice(0, 16)
@@ -136,6 +155,22 @@ app.get('/rapid/wc/finished', async (req, res) => {
             return { ...m, home, away }
         })
         enriched.sort((a, b) => b.kickoff?.localeCompare(a.kickoff))
+
+        // Pour les matchs sans cache disque, tenter de récupérer stats/compos/résumé
+        const uncached = enriched.filter(m => m.matchId && !loadMatchFromDisk(m.matchId))
+        if (uncached.length) {
+            await Promise.all(uncached.map(async m => {
+                try {
+                    const [comRes, statRes, linRes] = await Promise.all([
+                        fetch(`${base}/wc/match/${m.matchId}/commentary`, { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
+                        fetch(`${base}/wc/match/${m.matchId}/stats`,      { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
+                        fetch(`${base}/wc/match/${m.matchId}/lineups`,    { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
+                    ])
+                    saveMatchToDisk(m.matchId, { detail: m, commentary: comRes.data || {}, stats: statRes.data || [], lineups: linRes.data || null })
+                } catch {}
+            }))
+        }
+
         res.json({ success: true, data: enriched })
     } catch (err) { res.status(500).json({ success: false, error: err.message }) }
 })
@@ -175,12 +210,41 @@ app.get('/rapid/wc/live-full', async (req, res) => {
             })
             if (found) { home = found.equipe1; away = found.equipe2 }
 
-            return { ...m, home, away, commentary: comR.data || [], stats: statR.data || [], lineups: linR.data || null }
+            const matchData = { ...m, home, away, commentary: comR.data || {}, stats: statR.data || [], lineups: linR.data || null }
+            if (m.matchId) saveMatchToDisk(m.matchId, { detail: m, commentary: comR.data || {}, stats: statR.data || [], lineups: linR.data || null })
+            return matchData
         }))
 
         res.json({ success: true, data: enriched })
     } catch (err) {
         res.status(500).json({ success: false, error: err.message })
+    }
+})
+
+// Agrège les 4 endpoints d'un match en 1 appel — avec persistance disque
+app.get('/rapid/wc/match/:id/full', async (req, res) => {
+    const { id } = req.params
+    const saved = loadMatchFromDisk(id)
+    if (saved) return res.json({ data: saved })
+
+    const base = 'https://world-cup-2026-live-api.p.rapidapi.com'
+    try {
+        const [detRes, comRes, statRes, linRes] = await Promise.all([
+            fetch(`${base}/wc/match/${id}`,            { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
+            fetch(`${base}/wc/match/${id}/commentary`, { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
+            fetch(`${base}/wc/match/${id}/stats`,      { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
+            fetch(`${base}/wc/match/${id}/lineups`,    { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
+        ])
+        const combined = {
+            detail:     detRes.data  || {},
+            commentary: comRes.data  || {},
+            stats:      statRes.data || [],
+            lineups:    linRes.data  || null
+        }
+        saveMatchToDisk(id, combined)
+        res.json({ data: combined })
+    } catch (err) {
+        res.status(500).json({ error: err.message })
     }
 })
 
@@ -193,3 +257,4 @@ app.get(/^\/rapid\/(.+)$/, async (req, res) => {
     const text = await response.text()
     try { res.json(JSON.parse(text)) } catch { res.status(500).send(text) }
 })
+

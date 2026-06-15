@@ -288,32 +288,415 @@ const effectifs = {
             { annee: 2026, phase: "—" }
         ],
         joueurs: [
-            { nom: "Alisson", poste: "Gardien", club: "Liverpool" },
-            { nom: "Éderson", poste: "Gardien", club: "Fenerbahce" },
-            { nom: "Weverton", poste: "Gardien", club: "Grêmio" },
-            { nom: "Alex Sandro", poste: "Défenseur", club: "Flamengo" },
-            { nom: "Bremer", poste: "Défenseur", club: "Juventus" },
-            { nom: "Danilo", poste: "Défenseur", club: "Flamengo" },
-            { nom: "Douglas Santos", poste: "Défenseur", club: "Zenit" },
-            { nom: "Gabriel Magalhães", poste: "Défenseur", club: "Arsenal" },
-            { nom: "Léo Pereira", poste: "Défenseur", club: "Flamengo" },
-            { nom: "Marquinhos", poste: "Défenseur", club: "Paris SG" },
-            { nom: "Roger Ibañez", poste: "Défenseur", club: "Al Ahli" },
-            { nom: "Wesley", poste: "Défenseur", club: "AS Roma" },
-            { nom: "Bruno Guimarães", poste: "Milieu", club: "Newcastle" },
-            { nom: "Casemiro", poste: "Milieu", club: "Manchester United" },
-            { nom: "Danilo Santos", poste: "Milieu", club: "Botafogo" },
-            { nom: "Fabinho", poste: "Milieu", club: "Al Ittihad" },
-            { nom: "Lucas Paquetá", poste: "Milieu", club: "Flamengo" },
-            { nom: "Endrick", poste: "Attaquant", club: "Lyon" },
-            { nom: "Gabriel Martinelli", poste: "Attaquant", club: "Arsenal" },
-            { nom: "Igor Thiago", poste: "Attaquant", club: "Brentford" },
-            { nom: "Luiz Henrique", poste: "Attaquant", club: "Zenit" },
-            { nom: "Matheus Cunha", poste: "Attaquant", club: "Manchester United" },
-            { nom: "Neymar", poste: "Attaquant", club: "Santos" },
-            { nom: "Raphinha", poste: "Attaquant", club: "Barcelone" },
-            { nom: "Rayan", poste: "Attaquant", club: "Bournemouth" },
-            { nom: "Vinícius Júnior", poste: "Attaquant", club: "Real Madrid" }
+            { nom: "Alisson", poste: "Gardien", club: "Liverpool", details: {
+                dateNaissance: "02 octobre 1992",
+                lieuNaissance: "Novo Hamburgo (Rio Grande do Sul)",
+                taille: 193, poids: 91, piedPrefere: "Droit",
+                biographie: "Gardien titulaire du Brésil depuis 2018. Meilleur gardien du monde FIFA en 2019. Vainqueur de la Ligue des Champions avec Liverpool.",
+                palmares: [
+                    "Copa América 2019",
+                    "Ligue des Champions 2019 (Liverpool FC)",
+                    "Premier League 2020 (Liverpool FC)",
+                    "Coupe du monde des clubs FIFA 2019 (Liverpool FC)"
+                ],
+                clubs: [
+                    { club: "Liverpool FC", de: "07/2018", a: null },
+                    { club: "AS Roma", de: "07/2016", a: "07/2018" },
+                    { club: "SC Internacional", de: "01/2010", a: "07/2016" }
+                ]
+            }},
+            { nom: "Éderson", poste: "Gardien", club: "Fenerbahce", details: {
+                dateNaissance: "17 août 1993",
+                lieuNaissance: "Osasco (São Paulo)",
+                taille: 188, poids: 89, piedPrefere: "Gauche",
+                biographie: "Gardien aux relances remarquables, célèbre pour ses passes longues précises. Multiple champion d'Angleterre avec Manchester City.",
+                palmares: [
+                    "Copa América 2019",
+                    "Ligue des Champions 2023 (Manchester City)",
+                    "Premier League 2018, 2019, 2021, 2022, 2023, 2024 (Manchester City)",
+                    "FA Cup 2023 (Manchester City)",
+                    "Coupe de la Ligue anglaise 2018, 2019, 2020, 2021 (Manchester City)"
+                ],
+                clubs: [
+                    { club: "Fenerbahçe SK", de: "07/2025", a: null },
+                    { club: "Manchester City", de: "07/2017", a: "06/2025" },
+                    { club: "SL Benfica", de: "07/2015", a: "07/2017" },
+                    { club: "Rio Ave FC", de: "07/2012", a: "06/2015" }
+                ]
+            }},
+            { nom: "Weverton", poste: "Gardien", club: "Grêmio", details: {
+                dateNaissance: "13 décembre 1987",
+                lieuNaissance: "Caxias do Sul (Rio Grande do Sul)",
+                taille: 188, poids: 84, piedPrefere: "Droit",
+                biographie: "Gardien expérimenté, champion du Brésil et de la Copa Libertadores avec Palmeiras.",
+                palmares: [
+                    "Copa América 2019",
+                    "Copa Libertadores 2020 et 2021 (Palmeiras)",
+                    "Recopa Sudamericana 2022 (Palmeiras)",
+                    "Championnat du Brésil 2018, 2022, 2023 (Palmeiras)",
+                    "Copa do Brasil 2023 (Palmeiras)"
+                ],
+                clubs: [
+                    { club: "Grêmio", de: "01/2025", a: null },
+                    { club: "Palmeiras", de: "01/2015", a: "12/2024" },
+                    { club: "Athletico Paranaense", de: "01/2009", a: "12/2014" }
+                ]
+            }},
+            { nom: "Alex Sandro", poste: "Défenseur", club: "Flamengo", details: {
+                dateNaissance: "26 janvier 1991",
+                lieuNaissance: "Catanduva (São Paulo)",
+                taille: 181, poids: 77, piedPrefere: "Gauche",
+                biographie: "Arrière gauche offensif, multiple champion d'Italie avec la Juventus.",
+                palmares: [
+                    "Copa América 2019",
+                    "Championnat d'Italie 2015 à 2020 (Juventus)",
+                    "Coupe d'Italie 2015 à 2021 (Juventus)",
+                    "Supercoupe d'Italie 2015, 2019 (Juventus)",
+                    "Copa Libertadores 2013 (Porto Alegre)"
+                ],
+                clubs: [
+                    { club: "Flamengo", de: "07/2024", a: null },
+                    { club: "Juventus FC", de: "08/2015", a: "06/2024" },
+                    { club: "FC Porto", de: "07/2012", a: "07/2015" },
+                    { club: "Santos FC", de: "07/2009", a: "06/2012" }
+                ]
+            }},
+            { nom: "Bremer", poste: "Défenseur", club: "Juventus", details: {
+                dateNaissance: "18 mars 1997",
+                lieuNaissance: "Itapitanga (Bahia)",
+                taille: 188, poids: 83, piedPrefere: "Droit",
+                biographie: "Défenseur central robuste, révélé à Turin et élu meilleur défenseur de Serie A en 2022.",
+                palmares: [
+                    "Coupe d'Italie 2024 (Juventus FC)"
+                ],
+                clubs: [
+                    { club: "Juventus FC", de: "07/2022", a: null },
+                    { club: "Torino FC", de: "07/2018", a: "07/2022" },
+                    { club: "Atletico Mineiro", de: "01/2016", a: "06/2018" }
+                ]
+            }},
+            { nom: "Danilo", poste: "Défenseur", club: "Flamengo", details: {
+                dateNaissance: "15 juillet 1991",
+                lieuNaissance: "Bicas (Minas Gerais)",
+                taille: 180, poids: 75, piedPrefere: "Droit",
+                biographie: "Capitaine de la Seleção. Latéral droit polyvalent, champion avec Porto, Real Madrid, Man City et la Juventus.",
+                palmares: [
+                    "Copa América 2019",
+                    "Copa Libertadores 2011 (Santos FC)",
+                    "Liga 2012, 2013 (Real Madrid)",
+                    "Premier League 2018, 2019 (Manchester City)",
+                    "Championnat d'Italie 2020 (Juventus FC)"
+                ],
+                clubs: [
+                    { club: "Flamengo", de: "01/2024", a: null },
+                    { club: "Juventus FC", de: "07/2019", a: "12/2023" },
+                    { club: "Manchester City", de: "07/2017", a: "06/2019" },
+                    { club: "Real Madrid", de: "07/2012", a: "07/2017" },
+                    { club: "FC Porto", de: "07/2009", a: "06/2012" },
+                    { club: "América Mineiro", de: "01/2007", a: "06/2009" }
+                ]
+            }},
+            { nom: "Douglas Santos", poste: "Défenseur", club: "Zenit", details: {
+                dateNaissance: "22 juin 1994",
+                lieuNaissance: "Belo Horizonte (Minas Gerais)",
+                taille: 178, poids: 72, piedPrefere: "Gauche",
+                biographie: "Latéral gauche solide, évoluant en Russie depuis 2018.",
+                clubs: [
+                    { club: "Zenit Saint-Pétersbourg", de: "07/2018", a: null },
+                    { club: "Hamburger SV", de: "07/2016", a: "06/2018" },
+                    { club: "Athletico Paranaense", de: "01/2013", a: "06/2016" }
+                ]
+            }},
+            { nom: "Gabriel Magalhães", poste: "Défenseur", club: "Arsenal", details: {
+                dateNaissance: "19 décembre 1997",
+                lieuNaissance: "São Paulo (São Paulo)",
+                taille: 191, poids: 88, piedPrefere: "Gauche",
+                biographie: "Défenseur central gaucher de grande envergure, pilier d'Arsenal depuis 2020.",
+                palmares: [
+                    "FA Community Shield 2023 (Arsenal FC)"
+                ],
+                clubs: [
+                    { club: "Arsenal FC", de: "09/2020", a: null },
+                    { club: "LOSC Lille", de: "01/2019", a: "08/2020" },
+                    { club: "Troyes AC", de: "07/2017", a: "12/2018" },
+                    { club: "Avai FC", de: "01/2016", a: "06/2017" }
+                ]
+            }},
+            { nom: "Léo Pereira", poste: "Défenseur", club: "Flamengo", details: {
+                dateNaissance: "28 avril 1996",
+                lieuNaissance: "São Paulo (São Paulo)",
+                taille: 187, poids: 81, piedPrefere: "Droit",
+                biographie: "Défenseur central solide, champion de la Copa Libertadores avec Flamengo.",
+                palmares: [
+                    "Copa Libertadores 2022 (Flamengo)",
+                    "Championnat du Brésil 2020 (Athletico Paranaense)"
+                ],
+                clubs: [
+                    { club: "Flamengo", de: "01/2022", a: null },
+                    { club: "Athletico Paranaense", de: "01/2018", a: "12/2021" }
+                ]
+            }},
+            { nom: "Marquinhos", poste: "Défenseur", club: "Paris SG", details: {
+                dateNaissance: "14 mai 1994",
+                lieuNaissance: "São Paulo (São Paulo)",
+                taille: 183, poids: 75, piedPrefere: "Droit",
+                biographie: "Capitaine du Paris Saint-Germain et pilier de la défense brésilienne depuis plus de dix ans. L'un des meilleurs défenseurs centraux du monde.",
+                palmares: [
+                    "Copa América 2019",
+                    "Ligue 1 2014, 2015, 2016, 2018, 2019, 2020, 2022, 2023, 2024 (Paris SG)",
+                    "Coupe de France 2015, 2016, 2017, 2018, 2020, 2021 (Paris SG)",
+                    "Ligue des Champions 2025, 2026 (Paris SG)"
+                ],
+                clubs: [
+                    { club: "Paris Saint-Germain", de: "07/2013", a: null },
+                    { club: "AS Roma", de: "07/2012", a: "07/2013" },
+                    { club: "SC Corinthians", de: "01/2010", a: "06/2012" }
+                ]
+            }},
+            { nom: "Roger Ibañez", poste: "Défenseur", club: "Al Ahli", details: {
+                dateNaissance: "23 novembre 1998",
+                lieuNaissance: "Mariana (Minas Gerais)",
+                taille: 187, poids: 78, piedPrefere: "Gauche",
+                biographie: "Défenseur central gaucher révélé en Serie A avec l'Atalanta et la Roma.",
+                clubs: [
+                    { club: "Al-Ahli SC", de: "07/2023", a: null },
+                    { club: "AS Roma", de: "01/2020", a: "07/2023" },
+                    { club: "Atalanta BC", de: "07/2019", a: "12/2019" },
+                    { club: "Fluminense FC", de: "01/2018", a: "06/2019" }
+                ]
+            }},
+            { nom: "Wesley", poste: "Défenseur", club: "AS Roma", details: {
+                dateNaissance: "26 novembre 2003",
+                lieuNaissance: "São Paulo (São Paulo)",
+                taille: 183, poids: 76, piedPrefere: "Droit",
+                biographie: "Jeune latéral droit révélé à Flamengo, l'un des espoirs du football brésilien.",
+                clubs: [
+                    { club: "AS Roma", de: "07/2025", a: null },
+                    { club: "Flamengo", de: "01/2022", a: "06/2025" }
+                ]
+            }},
+            { nom: "Bruno Guimarães", poste: "Milieu", club: "Newcastle", details: {
+                dateNaissance: "16 novembre 1997",
+                lieuNaissance: "Rio de Janeiro (Rio de Janeiro)",
+                taille: 183, poids: 80, piedPrefere: "Droit",
+                biographie: "Milieu défensif technique et combatif, révélé à Lyon avant de s'imposer comme l'un des meilleurs de Premier League à Newcastle.",
+                palmares: [
+                    "Copa América 2019",
+                    "Copa Libertadores 2019 (Athletico Paranaense)"
+                ],
+                clubs: [
+                    { club: "Newcastle United", de: "01/2022", a: null },
+                    { club: "Olympique Lyonnais", de: "01/2020", a: "01/2022" },
+                    { club: "Athletico Paranaense", de: "01/2017", a: "12/2019" }
+                ]
+            }},
+            { nom: "Casemiro", poste: "Milieu", club: "Manchester United", details: {
+                dateNaissance: "23 février 1992",
+                lieuNaissance: "São José dos Campos (São Paulo)",
+                taille: 185, poids: 84, piedPrefere: "Droit",
+                biographie: "Milieu défensif de référence mondiale. Quintuple vainqueur de la Ligue des Champions avec le Real Madrid. Bouclier au milieu de terrain de la Seleção pendant une décennie.",
+                palmares: [
+                    "Copa América 2019",
+                    "Ligue des Champions 2016, 2017, 2018, 2022, 2024 (Real Madrid)",
+                    "Liga 2017, 2020, 2022 (Real Madrid)",
+                    "Coupe du monde des clubs 2016, 2017, 2018, 2022 (Real Madrid)",
+                    "Supercoupe de l'UEFA 2016, 2017, 2022 (Real Madrid)"
+                ],
+                clubs: [
+                    { club: "Manchester United", de: "08/2022", a: null },
+                    { club: "Real Madrid", de: "07/2013", a: "08/2022" },
+                    { club: "FC Porto", de: "07/2012", a: "06/2013" },
+                    { club: "São Paulo FC", de: "01/2009", a: "06/2012" }
+                ]
+            }},
+            { nom: "Danilo Santos", poste: "Milieu", club: "Botafogo", details: {
+                dateNaissance: "29 janvier 2001",
+                lieuNaissance: "Presidente Prudente (São Paulo)",
+                taille: 182, poids: 76, piedPrefere: "Droit",
+                biographie: "Milieu central prometteur, champion du Brésil avec Botafogo en 2024.",
+                palmares: [
+                    "Championnat du Brésil 2024 (Botafogo)",
+                    "Copa Libertadores 2024 (Botafogo)"
+                ],
+                clubs: [
+                    { club: "Botafogo", de: "01/2022", a: null },
+                    { club: "Athletico Paranaense", de: "01/2019", a: "12/2021" }
+                ]
+            }},
+            { nom: "Fabinho", poste: "Milieu", club: "Al Ittihad", details: {
+                dateNaissance: "23 octobre 1993",
+                lieuNaissance: "Campinas (São Paulo)",
+                taille: 188, poids: 83, piedPrefere: "Droit",
+                biographie: "Milieu défensif technique et physique, pièce maîtresse du Liverpool FC champion d'Europe et d'Angleterre.",
+                palmares: [
+                    "Copa América 2019",
+                    "Ligue des Champions 2019 (Liverpool FC)",
+                    "Premier League 2020 (Liverpool FC)",
+                    "FA Cup 2022 (Liverpool FC)",
+                    "Coupe de la Ligue anglaise 2022 (Liverpool FC)"
+                ],
+                clubs: [
+                    { club: "Al-Ittihad Club", de: "07/2023", a: null },
+                    { club: "Liverpool FC", de: "07/2018", a: "06/2023" },
+                    { club: "AS Monaco", de: "07/2013", a: "07/2018" },
+                    { club: "Real Madrid", de: "07/2012", a: "06/2013" },
+                    { club: "Fluminense FC", de: "01/2011", a: "06/2012" }
+                ]
+            }},
+            { nom: "Lucas Paquetá", poste: "Milieu", club: "Flamengo", details: {
+                dateNaissance: "27 août 1997",
+                lieuNaissance: "Rio de Janeiro (Rio de Janeiro)",
+                taille: 180, poids: 77, piedPrefere: "Gauche",
+                biographie: "Milieu offensif technique et créatif, élu meilleur joueur de Premier League en 2023 avec West Ham.",
+                palmares: [
+                    "Copa América 2019",
+                    "Ligue Europa Conférence 2023 (West Ham United)",
+                    "Copa Libertadores 2019 (Flamengo)",
+                    "Championnat du Brésil 2019 (Flamengo)"
+                ],
+                clubs: [
+                    { club: "Flamengo", de: "01/2025", a: null },
+                    { club: "West Ham United", de: "08/2022", a: "12/2024" },
+                    { club: "Olympique Lyonnais", de: "01/2020", a: "07/2022" },
+                    { club: "AC Milan", de: "01/2019", a: "12/2019" },
+                    { club: "Flamengo", de: "01/2016", a: "12/2018" }
+                ]
+            }},
+            { nom: "Endrick", poste: "Attaquant", club: "Lyon", details: {
+                dateNaissance: "21 juillet 2006",
+                lieuNaissance: "Taguatinga (District Fédéral)",
+                taille: 173, poids: 68, piedPrefere: "Droit",
+                biographie: "Prodige du football brésilien, plus jeune buteur de l'histoire de la Seleção. Golden Boy 2024. Transféré au Real Madrid à 18 ans.",
+                palmares: [
+                    "Copa São Paulo de Futebol Júnior 2023 (Palmeiras)",
+                    "Championnat Pauliste 2023 (Palmeiras)"
+                ],
+                clubs: [
+                    { club: "Olympique Lyonnais", de: "01/2025", a: null },
+                    { club: "Real Madrid CF", de: "07/2024", a: "12/2024" },
+                    { club: "Palmeiras", de: "01/2022", a: "06/2024" }
+                ]
+            }},
+            { nom: "Gabriel Martinelli", poste: "Attaquant", club: "Arsenal", details: {
+                dateNaissance: "18 juin 2001",
+                lieuNaissance: "Guarulhos (São Paulo)",
+                taille: 175, poids: 75, piedPrefere: "Gauche",
+                biographie: "Ailier gauche explosif, révélé très jeune à Arsenal où il est devenu l'un des attaquants les plus redoutés de Premier League.",
+                palmares: [
+                    "FA Community Shield 2023 (Arsenal FC)"
+                ],
+                clubs: [
+                    { club: "Arsenal FC", de: "07/2019", a: null },
+                    { club: "Ituano FC", de: "01/2019", a: "06/2019" }
+                ]
+            }},
+            { nom: "Igor Thiago", poste: "Attaquant", club: "Brentford", details: {
+                dateNaissance: "13 septembre 2000",
+                lieuNaissance: "Rio Verde (Goiás)",
+                taille: 185, poids: 80, piedPrefere: "Droit",
+                biographie: "Avant-centre puissant, révélé en Belgique avant de rejoindre la Premier League.",
+                clubs: [
+                    { club: "Brentford FC", de: "07/2024", a: null },
+                    { club: "Club Brugge", de: "07/2022", a: "06/2024" },
+                    { club: "Criciúma EC", de: "01/2020", a: "06/2022" }
+                ]
+            }},
+            { nom: "Luiz Henrique", poste: "Attaquant", club: "Zenit", details: {
+                dateNaissance: "13 juin 2001",
+                lieuNaissance: "Salvador (Bahia)",
+                taille: 177, poids: 72, piedPrefere: "Droit",
+                biographie: "Ailier rapide et technique, révélé à Betis Séville avant de rejoindre le Brésil et le Zenit.",
+                clubs: [
+                    { club: "Zenit Saint-Pétersbourg", de: "07/2024", a: null },
+                    { club: "Botafogo", de: "01/2023", a: "06/2024" },
+                    { club: "Real Betis", de: "07/2021", a: "12/2022" },
+                    { club: "Fluminense FC", de: "01/2019", a: "06/2021" }
+                ]
+            }},
+            { nom: "Matheus Cunha", poste: "Attaquant", club: "Manchester United", details: {
+                dateNaissance: "27 mai 1999",
+                lieuNaissance: "Petrópolis (Rio de Janeiro)",
+                taille: 180, poids: 77, piedPrefere: "Droit",
+                biographie: "Attaquant polyvalent et technique, révélé en Bundesliga avant de s'imposer en Premier League avec Wolverhampton.",
+                clubs: [
+                    { club: "Manchester United", de: "07/2025", a: null },
+                    { club: "Wolverhampton Wanderers", de: "01/2023", a: "06/2025" },
+                    { club: "Atlético Madrid", de: "07/2021", a: "12/2022" },
+                    { club: "Hertha BSC", de: "09/2020", a: "06/2021" },
+                    { club: "RB Leipzig", de: "07/2019", a: "08/2020" },
+                    { club: "Coritiba FC", de: "01/2017", a: "06/2019" }
+                ]
+            }},
+            { nom: "Neymar", poste: "Attaquant", club: "Santos", details: {
+                dateNaissance: "05 février 1992",
+                lieuNaissance: "Mogi das Cruzes (São Paulo)",
+                taille: 175, poids: 68, piedPrefere: "Droit",
+                biographie: "Meilleur buteur et joueur le plus capé de l'histoire de la Seleção. Triple finaliste du Ballon d'Or (2012, 2015, 2017). Vainqueur de la Ligue des Champions avec le Barça en 2015. Joueur le plus cher de l'histoire lors de son transfert au PSG en 2017 (222 M€).",
+                palmares: [
+                    "Copa América 2019",
+                    "Médaille d'or aux Jeux Olympiques 2016",
+                    "Copa Libertadores 2011 (Santos FC)",
+                    "Ligue des Champions 2015 (FC Barcelone)",
+                    "Liga 2015, 2016 (FC Barcelone)",
+                    "Coupe du Roi 2015, 2016 (FC Barcelone)",
+                    "Ligue 1 2018, 2019, 2020, 2022 (Paris Saint-Germain)",
+                    "Copa Confederations 2013",
+                    "Coupe du monde des clubs FIFA 2011 (Santos), 2015 (FC Barcelone)"
+                ],
+                clubs: [
+                    { club: "Santos FC", de: "01/2025", a: null },
+                    { club: "Al-Hilal FC", de: "08/2023", a: "12/2024" },
+                    { club: "Paris Saint-Germain", de: "08/2017", a: "07/2023" },
+                    { club: "FC Barcelone", de: "06/2013", a: "07/2017" },
+                    { club: "Santos FC", de: "01/2009", a: "05/2013" }
+                ]
+            }},
+            { nom: "Raphinha", poste: "Attaquant", club: "Barcelone", details: {
+                dateNaissance: "14 décembre 1996",
+                lieuNaissance: "Porto Alegre (Rio Grande do Sul)",
+                taille: 176, poids: 68, piedPrefere: "Droit",
+                biographie: "Ailier droit explosif et buteur prolifique, capitaine offensif du Brésil. Révélé en France et en Angleterre avant de briller au FC Barcelone.",
+                palmares: [
+                    "Copa América 2019",
+                    "Championnat d'Espagne 2023 (FC Barcelone)"
+                ],
+                clubs: [
+                    { club: "FC Barcelone", de: "07/2022", a: null },
+                    { club: "Leeds United", de: "10/2020", a: "07/2022" },
+                    { club: "Stade Rennais FC", de: "07/2019", a: "09/2020" },
+                    { club: "Vitesse", de: "07/2018", a: "06/2019" },
+                    { club: "Avai FC", de: "01/2015", a: "06/2018" }
+                ]
+            }},
+            { nom: "Rayan", poste: "Attaquant", club: "Bournemouth", details: {
+                dateNaissance: "19 juin 2005",
+                lieuNaissance: "São Paulo (São Paulo)",
+                taille: 178, poids: 70, piedPrefere: "Droit",
+                biographie: "Jeune ailier gauche talentueux, l'un des grands espoirs du football brésilien.",
+                clubs: [
+                    { club: "AFC Bournemouth", de: "07/2024", a: null },
+                    { club: "Flamengo", de: "01/2022", a: "06/2024" }
+                ]
+            }},
+            { nom: "Vinícius Júnior", poste: "Attaquant", club: "Real Madrid", details: {
+                dateNaissance: "12 juillet 2000",
+                lieuNaissance: "São Gonçalo (Rio de Janeiro)",
+                taille: 176, poids: 73, piedPrefere: "Droit",
+                biographie: "L'un des meilleurs joueurs du monde. Vainqueur du FIFA Best 2024. Dribbleur exceptionnel, auteur de la finale de la Ligue des Champions 2022 avec le Real Madrid (but décisif).",
+                palmares: [
+                    "Copa América 2019",
+                    "Médaille d'or aux Jeux Olympiques 2024",
+                    "Ligue des Champions 2022, 2024 (Real Madrid)",
+                    "Liga 2022, 2024 (Real Madrid)",
+                    "Supercoupe de l'UEFA 2022, 2024 (Real Madrid)",
+                    "Coupe du monde des clubs FIFA 2022 (Real Madrid)",
+                    "Copa Libertadores 2019 (Flamengo)"
+                ],
+                clubs: [
+                    { club: "Real Madrid CF", de: "07/2018", a: null },
+                    { club: "Flamengo", de: "01/2016", a: "06/2018" }
+                ]
+            }}
         ]
     },
     "Canada": {
@@ -727,25 +1110,652 @@ const effectifs = {
             { annee: 2026, phase: "—" }
         ],
         joueurs: [
-            { nom: "Mike Maignan", poste: "Gardien", club: "AC Milan", photo: "https://r2.thesportsdb.com/images/media/player/cutout/sw5ukh1758892671.png" },
-            { nom: "Robin Risser", poste: "Gardien", club: "Lens", photo: "https://r2.thesportsdb.com/images/media/player/cutout/tqtcbn1766004778.png" },
-            { nom: "Brice Samba", poste: "Gardien", club: "Rennes", photo: "https://r2.thesportsdb.com/images/media/player/cutout/nkfugp1766137864.png" },
-            { nom: "Lucas Digne", poste: "Défenseur", club: "Aston Villa", photo: "https://r2.thesportsdb.com/images/media/player/cutout/ywg68z1756984819.png" },
-            { nom: "Malo Gusto", poste: "Défenseur", club: "Chelsea", photo: "https://r2.thesportsdb.com/images/media/player/cutout/wzyklc1757003476.png" },
-            { nom: "Lucas Hernández", poste: "Défenseur", club: "Paris SG", photo: "https://r2.thesportsdb.com/images/media/player/cutout/2ugny71766335261.png" },
-            { nom: "Théo Hernández", poste: "Défenseur", club: "Al Hilal", photo: "https://r2.thesportsdb.com/images/media/player/cutout/4d3g7j1675234242.png" },
-            { nom: "Ibrahima Konaté", poste: "Défenseur", club: "Liverpool", photo: "https://r2.thesportsdb.com/images/media/player/cutout/izock91757088476.png" },
-            { nom: "Jules Koundé", poste: "Défenseur", club: "Barcelone", photo: "https://r2.thesportsdb.com/images/media/player/cutout/qea88i1726509803.png" },
-            { nom: "Maxence Lacroix", poste: "Défenseur", club: "Crystal Palace", photo: "https://r2.thesportsdb.com/images/media/player/cutout/6p7f5w1761492552.png" },
-            { nom: "William Saliba", poste: "Défenseur", club: "Arsenal", photo: "https://r2.thesportsdb.com/images/media/player/cutout/czasy21769331889.png" },
-            { nom: "Dayot Upamecano", poste: "Défenseur", club: "Bayern Munich", photo: "https://r2.thesportsdb.com/images/media/player/cutout/a1hyfj1756416177.png" },
-            { nom: "N'Golo Kanté", poste: "Milieu", club: "Fenerbahçe", photo: "https://r2.thesportsdb.com/images/media/player/cutout/ld6low1719039995.png" },
-            { nom: "Manu Koné", poste: "Milieu", club: "AS Roma", photo: "https://r2.thesportsdb.com/images/media/player/cutout/s4wyo21758815461.png" },
-            { nom: "Adrien Rabiot", poste: "Milieu", club: "AC Milan", photo: "https://r2.thesportsdb.com/images/media/player/cutout/m2upnx1758893486.png" },
-            { nom: "Aurélien Tchouaméni", poste: "Milieu", club: "Real Madrid", photo: "https://r2.thesportsdb.com/images/media/player/cutout/4o417k1733653668.png" },
-            { nom: "Warren Zaïre-Emery", poste: "Milieu", club: "Paris SG", photo: "https://r2.thesportsdb.com/images/media/player/cutout/fjxbac1766335583.png" },
-            { nom: "Maghnes Akliouche", poste: "Attaquant", club: "AS Monaco", photo: "https://r2.thesportsdb.com/images/media/player/cutout/2x2cfx1766237890.png" },
-            { nom: "Bradley Barcola", poste: "Attaquant", club: "Paris SG", photo: "https://r2.thesportsdb.com/images/media/player/cutout/l2v71f1766334537.png" },
+            { nom: "Mike Maignan", poste: "Gardien", club: "AC Milan", photo: "https://r2.thesportsdb.com/images/media/player/cutout/sw5ukh1758892671.png", details: {
+                dateNaissance: "03 juillet 1995",
+                lieuNaissance: "Cayenne (Guyane)",
+                taille: 191,
+                poids: 91,
+                piedPrefere: "Droit",
+                nbSelections: 40,
+                premierSelection: "07/10/2020 : France 7-1 Ukraine",
+                biographie: "Troisième de la Ligue des Nations de l'UEFA 2025. Meilleur gardien du championnat d'Italie 2022.",
+                stats: { matchsJoues: 40, titularisations: 39, minutesJouees: 3833, buts: 0 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 40, buts: 0 },
+                    { equipe: "Équipe de France Espoirs", matchs: 6, buts: 0 },
+                    { equipe: "U20", matchs: 1, buts: 0 },
+                    { equipe: "U19", matchs: 3, buts: 0 },
+                    { equipe: "U18", matchs: 5, buts: 0 },
+                    { equipe: "U17", matchs: 12, buts: 0 },
+                    { equipe: "U16", matchs: 10, buts: 0 }
+                ],
+                palmares: [
+                    "Ligue des Nations de l'UEFA 2021",
+                    "Championnat de France de Ligue 1 2021 (LOSC Lille)",
+                    "Championnat d'Italie 2022 (AC Milan)",
+                    "Supercoupe d'Italie 2024 (AC Milan)",
+                    "Championnat de France U17 2011 (Paris Saint-Germain FC)",
+                    "Tournoi de Limoges U18 2012",
+                    "Aegean Cup U16 2011",
+                    "Tournoi du Val-de-Marne U16 2010",
+                    "Meilleur gardien du championnat d'Italie 2022"
+                ],
+                clubs: [
+                    { club: "AC Milan", de: "07/2021", a: null },
+                    { club: "LOSC Lille", de: "08/2015", a: "06/2021" },
+                    { club: "Paris Saint-Germain", de: "07/2009", a: "07/2015" },
+                    { club: "JS Villiers-le-Bel", de: "08/2003", a: "06/2009" }
+                ]
+            }},
+            { nom: "Robin Risser", poste: "Gardien", club: "Lens", photo: "https://r2.thesportsdb.com/images/media/player/cutout/tqtcbn1766004778.png", details: {
+                dateNaissance: "02 décembre 2004",
+                lieuNaissance: "Colmar (Haut-Rhin)",
+                taille: 193,
+                poids: 84,
+                piedPrefere: "Droit",
+                nbSelections: 0,
+                stats: { matchsJoues: 0, titularisations: 0, minutesJouees: 0, buts: 0 },
+                parcours: [
+                    { equipe: "Équipe de France Espoirs", matchs: 5, buts: 0 },
+                    { equipe: "U20", matchs: 1, buts: 0 },
+                    { equipe: "U19", matchs: 6, buts: 0 },
+                    { equipe: "U18", matchs: 3, buts: 0 },
+                    { equipe: "U16", matchs: 3, buts: 0 }
+                ],
+                palmares: [
+                    "Coupe de France 2026 (RC Lens)",
+                    "Trophée UNFP du meilleur gardien de Ligue 1 2026"
+                ],
+                clubs: [
+                    { club: "RC Lens", de: "07/2025", a: null },
+                    { club: "Red Star FC", de: "11/2024", a: "06/2025" },
+                    { club: "RC Strasbourg Alsace", de: "07/2024", a: "11/2024" },
+                    { club: "Dijon FCO", de: "07/2023", a: "06/2024" },
+                    { club: "RC Strasbourg Alsace", de: "07/2017", a: "06/2023" },
+                    { club: "SR Colmar", de: "07/2015", a: "06/2017" },
+                    { club: "FC Bennwihr", de: "09/2010", a: "06/2015" }
+                ]
+            }},
+            { nom: "Brice Samba", poste: "Gardien", club: "Rennes", photo: "https://r2.thesportsdb.com/images/media/player/cutout/nkfugp1766137864.png", details: {
+                dateNaissance: "25 avril 1994",
+                lieuNaissance: "Linzolo (République du Congo)",
+                taille: 186,
+                poids: 79,
+                piedPrefere: "Droit",
+                nbSelections: 4,
+                premierSelection: "16/06/2023 : Gibraltar 0-3 France",
+                biographie: "Troisième de la Ligue des Nations de l'UEFA 2025.",
+                stats: { matchsJoues: 4, titularisations: 4, minutesJouees: 384, buts: 0 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 4, buts: 0 }
+                ],
+                palmares: [
+                    "Championnat de France de Ligue 2 2016 (AS Nancy-Lorraine)",
+                    "Trophée UNFP de meilleur gardien de Ligue 1 2023"
+                ],
+                clubs: [
+                    { club: "Stade Rennais FC", de: "01/2025", a: null },
+                    { club: "RC Lens", de: "07/2022", a: "01/2025" },
+                    { club: "Nottingham Forest FC", de: "08/2019", a: "07/2022" },
+                    { club: "SM Caen", de: "07/2017", a: "07/2019" },
+                    { club: "Olympique de Marseille", de: "07/2016", a: "06/2017" },
+                    { club: "AS Nancy-Lorraine", de: "07/2015", a: "06/2016" },
+                    { club: "Olympique de Marseille", de: "07/2012", a: "06/2015" },
+                    { club: "Le Havre AC", de: "07/2006", a: "06/2012" },
+                    { club: "ALM Évreux", de: "11/2002", a: "06/2006" },
+                    { club: "Pacy VEF", de: "09/2001", a: "10/2002" }
+                ]
+            }},
+            { nom: "Lucas Digne", poste: "Défenseur", club: "Aston Villa", photo: "https://r2.thesportsdb.com/images/media/player/cutout/ywg68z1756984819.png", details: {
+                dateNaissance: "20 juillet 1993",
+                lieuNaissance: "Meaux (Seine-et-Marne)",
+                taille: 178,
+                poids: 74,
+                piedPrefere: "Gauche",
+                nbSelections: 58,
+                premierSelection: "05/03/2014 : France 2-0 Pays-Bas",
+                biographie: "Finaliste de l'Euro 2016. Troisième de la Ligue des Nations de l'UEFA 2025.",
+                stats: { matchsJoues: 58, titularisations: 39, minutesJouees: 4097, buts: 0 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 58, buts: 0 },
+                    { equipe: "Équipe de France Espoirs", matchs: 7, buts: 0 },
+                    { equipe: "U20", matchs: 12, buts: 2 },
+                    { equipe: "U19", matchs: 12, buts: 1 },
+                    { equipe: "U18", matchs: 11, buts: 0 },
+                    { equipe: "U17", matchs: 15, buts: 0 }
+                ],
+                palmares: [
+                    "Ligue des Nations de l'UEFA 2021",
+                    "Coupe du monde U20 2013",
+                    "Ligue Europa 2026 (Aston Villa FC)",
+                    "Championnat d'Espagne 2018 (FC Barcelone)",
+                    "Championnat de France de Ligue 1 2014 et 2015 (Paris Saint-Germain)",
+                    "Coupe du Roi 2017 et 2018 (FC Barcelone)",
+                    "Coupe de France 2015 (Paris Saint-Germain)",
+                    "Coupe de la Ligue 2014 et 2015 (Paris Saint-Germain)",
+                    "Supercoupe d'Espagne 2016 (FC Barcelone)",
+                    "Trophée des Champions 2013, 2014 et 2015 (Paris Saint-Germain)",
+                    "Tournoi de Limoges U18 2010",
+                    "Aegean Cup U16 2009"
+                ],
+                clubs: [
+                    { club: "Aston Villa FC", de: "01/2022", a: null },
+                    { club: "Everton FC", de: "08/2018", a: "12/2021" },
+                    { club: "FC Barcelone", de: "07/2016", a: "07/2018" },
+                    { club: "AS Rome", de: "08/2015", a: "06/2016" },
+                    { club: "Paris Saint-Germain", de: "07/2013", a: "08/2015" },
+                    { club: "Lille OSC", de: "07/2005", a: "06/2013" },
+                    { club: "US Crépy-en-Valois", de: "07/2002", a: "06/2005" },
+                    { club: "US Mareuil-sur-Ourcq", de: "09/1999", a: "06/2002" }
+                ]
+            }},
+            { nom: "Malo Gusto", poste: "Défenseur", club: "Chelsea", photo: "https://r2.thesportsdb.com/images/media/player/cutout/wzyklc1757003476.png", details: {
+                dateNaissance: "19 mai 2003",
+                lieuNaissance: "Décines-Charpieu (Rhône)",
+                taille: 179,
+                poids: 74,
+                piedPrefere: "Droit",
+                nbSelections: 11,
+                premierSelection: "13/10/2023 : Pays-Bas 1-2 France",
+                biographie: "Troisième de la Ligue des Nations de l'UEFA 2025.",
+                stats: { matchsJoues: 11, titularisations: 4, minutesJouees: 565, buts: 0 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 11, buts: 0 },
+                    { equipe: "Équipe de France Espoirs", matchs: 10, buts: 1 },
+                    { equipe: "U19", matchs: 3, buts: 0 },
+                    { equipe: "U17", matchs: 1, buts: 0 },
+                    { equipe: "U16", matchs: 2, buts: 0 }
+                ],
+                palmares: [
+                    "Coupe du monde des clubs de la FIFA 2025 (Chelsea FC)",
+                    "Ligue Conférence de l'UEFA 2025 (Chelsea FC)"
+                ],
+                clubs: [
+                    { club: "Chelsea FC", de: "07/2023", a: null },
+                    { club: "Olympique Lyonnais", de: "07/2016", a: "06/2023" },
+                    { club: "FC Bourgoin-Jallieu", de: "07/2015", a: "06/2016" },
+                    { club: "AS Villefontaine", de: "09/2012", a: "06/2015" }
+                ]
+            }},
+            { nom: "Lucas Hernández", poste: "Défenseur", club: "Paris SG", photo: "https://r2.thesportsdb.com/images/media/player/cutout/2ugny71766335261.png", details: {
+                dateNaissance: "14 février 1996",
+                lieuNaissance: "Marseille (Bouches-du-Rhône)",
+                taille: 180,
+                poids: 75,
+                piedPrefere: "Gauche",
+                nbSelections: 42,
+                premierSelection: "23/03/2018 : France 2-3 Colombie",
+                biographie: "Finaliste de la Coupe du monde 2022. Troisième de la Ligue des Nations de l'UEFA 2025.",
+                stats: { matchsJoues: 42, titularisations: 36, minutesJouees: 3039, buts: 0 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 42, buts: 0 },
+                    { equipe: "Équipe de France Espoirs", matchs: 9, buts: 0 },
+                    { equipe: "U20", matchs: 3, buts: 0 },
+                    { equipe: "U19", matchs: 13, buts: 0 },
+                    { equipe: "U18", matchs: 2, buts: 0 },
+                    { equipe: "U16", matchs: 1, buts: 0 }
+                ],
+                palmares: [
+                    "Coupe du monde 2018",
+                    "Ligue des Nations de l'UEFA 2021",
+                    "Ligue des champions de l'UEFA 2020 (FC Bayern Munich), 2025 et 2026 (Paris Saint-Germain)",
+                    "Coupe intercontinentale de la FIFA 2025 (Paris Saint-Germain)",
+                    "Coupe du monde des clubs de la FIFA 2020 (FC Bayern Munich)",
+                    "Ligue Europa 2018 (Club Atlético de Madrid)",
+                    "Supercoupe de l'UEFA 2018 (Club Atlético de Madrid), 2020 (FC Bayern Munich) et 2025 (Paris Saint-Germain)",
+                    "Championnat de France de Ligue 1 2024, 2025 et 2026 (Paris Saint-Germain)",
+                    "Championnat d'Allemagne 2020, 2021, 2022 et 2023 (FC Bayern Munich)",
+                    "Coupe de France 2025 (Paris Saint-Germain)",
+                    "Coupe d'Allemagne 2020 (FC Bayern Munich)",
+                    "Trophée des champions 2023, 2024 et 2025 (Paris Saint-Germain)",
+                    "Supercoupe d'Allemagne 2020 et 2022 (FC Bayern Munich)",
+                    "Chevalier de la Légion d'honneur"
+                ],
+                clubs: [
+                    { club: "Paris Saint-Germain", de: "07/2023", a: null },
+                    { club: "FC Bayern Munich", de: "07/2019", a: "07/2023" },
+                    { club: "Club Atlético de Madrid", de: "07/2007", a: "06/2019" },
+                    { club: "CF Rayo Majadahonda", de: "01/2002", a: "06/2007" }
+                ]
+            }},
+            { nom: "Théo Hernández", poste: "Défenseur", club: "Al Hilal", photo: "https://r2.thesportsdb.com/images/media/player/cutout/4d3g7j1675234242.png", details: {
+                dateNaissance: "06 octobre 1997",
+                lieuNaissance: "Marseille (Bouches-du-Rhône)",
+                taille: 184,
+                poids: 81,
+                piedPrefere: "Gauche",
+                nbSelections: 44,
+                premierSelection: "07/09/2021 : France 2-0 Finlande",
+                biographie: "Finaliste de la Coupe du monde 2022. Troisième de la Ligue des Nations de l'UEFA 2025.",
+                stats: { matchsJoues: 44, titularisations: 42, minutesJouees: 4047, buts: 2 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 44, buts: 2 },
+                    { equipe: "U20", matchs: 3, buts: 1 },
+                    { equipe: "U19", matchs: 9, buts: 0 },
+                    { equipe: "U18", matchs: 4, buts: 0 }
+                ],
+                palmares: [
+                    "Ligue des Nations de l'UEFA 2021",
+                    "Ligue des champions 2018 (Real Madrid CF)",
+                    "Coupe du monde des clubs 2017 (Real Madrid CF)",
+                    "Supercoupe d'Europe 2017 (Real Madrid CF)",
+                    "Coupe d'Arabie Saoudite 2026 (Al-Hilal FC)",
+                    "Championnat d'Italie 2022 (AC Milan)",
+                    "Supercoupe d'Italie 2024 (AC Milan)",
+                    "Supercoupe d'Espagne 2017 (Real Madrid CF)"
+                ],
+                clubs: [
+                    { club: "Al-Hilal FC", de: "07/2025", a: null },
+                    { club: "AC Milan", de: "07/2019", a: "07/2025" },
+                    { club: "Real Sociedad", de: "08/2018", a: "06/2019" },
+                    { club: "Real Madrid", de: "07/2017", a: "07/2018" },
+                    { club: "Alaves Vitoria", de: "08/2016", a: "06/2017" },
+                    { club: "Atlético Madrid", de: "07/2007", a: "07/2016" },
+                    { club: "CF Rayo Majadahonda", de: "07/2006", a: "06/2007" }
+                ]
+            }},
+            { nom: "Ibrahima Konaté", poste: "Défenseur", club: "Liverpool", photo: "https://r2.thesportsdb.com/images/media/player/cutout/izock91757088476.png", details: {
+                dateNaissance: "25 mai 1999",
+                lieuNaissance: "Paris 13e",
+                taille: 194,
+                poids: 95,
+                piedPrefere: "Droit",
+                nbSelections: 28,
+                premierSelection: "10/06/2022 : Autriche 1-1 France",
+                biographie: "Finaliste de la Coupe du monde 2022. Troisième de la Ligue des Nations de l'UEFA 2025.",
+                stats: { matchsJoues: 28, titularisations: 25, minutesJouees: 2422, buts: 0 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 28, buts: 0 },
+                    { equipe: "Équipe de France Espoirs", matchs: 13, buts: 0 },
+                    { equipe: "U20", matchs: 1, buts: 0 },
+                    { equipe: "U19", matchs: 1, buts: 0 },
+                    { equipe: "U17", matchs: 7, buts: 0 },
+                    { equipe: "U16", matchs: 12, buts: 2 }
+                ],
+                palmares: [
+                    "Championnat d'Angleterre de Division 1 2025 (Liverpool FC)",
+                    "Coupe d'Angleterre 2022 (Liverpool FC)",
+                    "Coupe de la Ligue anglaise 2022 et 2024 (Liverpool FC)",
+                    "Community Shield 2022 (Liverpool FC)"
+                ],
+                clubs: [
+                    { club: "Liverpool FC", de: "07/2021", a: null },
+                    { club: "RB Leipzig", de: "07/2017", a: "06/2021" },
+                    { club: "FC Sochaux-Montbéliard", de: "07/2014", a: "06/2017" },
+                    { club: "Paris FC", de: "09/2009", a: "06/2014" }
+                ]
+            }},
+            { nom: "Jules Koundé", poste: "Défenseur", club: "Barcelone", photo: "https://r2.thesportsdb.com/images/media/player/cutout/qea88i1726509803.png", details: {
+                dateNaissance: "12 novembre 1998",
+                lieuNaissance: "Paris",
+                taille: 180,
+                poids: 75,
+                piedPrefere: "Droit",
+                nbSelections: 48,
+                premierSelection: "02/06/2021 : France 3-0 Pays de Galles",
+                biographie: "Finaliste de la Coupe du monde 2022.",
+                stats: { matchsJoues: 48, titularisations: 41, minutesJouees: 3825, buts: 0 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 48, buts: 0 },
+                    { equipe: "Équipe de France Espoirs", matchs: 8, buts: 1 },
+                    { equipe: "U20", matchs: 1, buts: 0 }
+                ],
+                palmares: [
+                    "Ligue des Nations de l'UEFA 2021",
+                    "Ligue Europa 2020 (FC Séville)",
+                    "Championnat d'Espagne 2023, 2025 et 2026 (FC Barcelone)",
+                    "Coupe d'Espagne 2025 (FC Barcelone)",
+                    "Supercoupe d'Espagne 2022, 2025 et 2026 (FC Barcelone)"
+                ],
+                clubs: [
+                    { club: "FC Barcelone", de: "07/2022", a: null },
+                    { club: "FC Séville", de: "07/2019", a: "07/2022" },
+                    { club: "FC Girondins de Bordeaux", de: "07/2013", a: "06/2019" },
+                    { club: "La Brède FC", de: "08/2010", a: "06/2013" },
+                    { club: "Olympique de Cérons", de: "08/2009", a: "06/2010" },
+                    { club: "Fraternelle de Landiras", de: "12/2004", a: "06/2009" }
+                ]
+            }},
+            { nom: "Maxence Lacroix", poste: "Défenseur", club: "Crystal Palace", photo: "https://r2.thesportsdb.com/images/media/player/cutout/6p7f5w1761492552.png", details: {
+                dateNaissance: "06 avril 2000",
+                lieuNaissance: "Villeneuve-Saint-Georges (Val-de-Marne)",
+                taille: 190,
+                poids: 88,
+                piedPrefere: "Droit",
+                nbSelections: 4,
+                premierSelection: "26/03/2026 : Brésil 1-2 France",
+                stats: { matchsJoues: 4, titularisations: 1, minutesJouees: 246, buts: 0 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 4, buts: 0 },
+                    { equipe: "U20", matchs: 2, buts: 0 },
+                    { equipe: "U18", matchs: 5, buts: 0 },
+                    { equipe: "U17", matchs: 4, buts: 0 },
+                    { equipe: "U16", matchs: 1, buts: 0 }
+                ],
+                palmares: [
+                    "Ligue Conférence 2026 (Crystal Palace FC)",
+                    "Coupe d'Angleterre 2025 (Crystal Palace FC)",
+                    "Community Shield 2025 (Crystal Palace FC)"
+                ],
+                clubs: [
+                    { club: "Crystal Palace FC", de: "09/2024", a: null },
+                    { club: "VfL Wolfsbourg", de: "08/2020", a: "08/2024" },
+                    { club: "FC Sochaux-Montbéliard", de: "07/2015", a: "08/2020" },
+                    { club: "Trélissac FC", de: "08/2012", a: "06/2015" },
+                    { club: "FC Thenon Limeyrat Fossemagne", de: "09/2011", a: "07/2012" },
+                    { club: "ES Montignacoise", de: "09/2008", a: "08/2011" },
+                    { club: "AS Les Croquants de Limeyrat", de: "09/2006", a: "08/2008" }
+                ]
+            }},
+            { nom: "William Saliba", poste: "Défenseur", club: "Arsenal", photo: "https://r2.thesportsdb.com/images/media/player/cutout/czasy21769331889.png", details: {
+                dateNaissance: "24 mars 2001",
+                lieuNaissance: "Bondy (Seine-Saint-Denis)",
+                taille: 192,
+                poids: 92,
+                piedPrefere: "Droit",
+                nbSelections: 32,
+                premierSelection: "25/03/2022 : France 2-1 Côte d'Ivoire",
+                biographie: "Finaliste de la Coupe du monde 2022.",
+                stats: { matchsJoues: 32, titularisations: 25, minutesJouees: 2635, buts: 0 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 32, buts: 0 },
+                    { equipe: "Équipe de France Espoirs", matchs: 5, buts: 0 },
+                    { equipe: "U20", matchs: 1, buts: 0 },
+                    { equipe: "U19", matchs: 3, buts: 0 },
+                    { equipe: "U18", matchs: 5, buts: 1 },
+                    { equipe: "U17", matchs: 6, buts: 2 },
+                    { equipe: "U16", matchs: 7, buts: 1 }
+                ],
+                palmares: [
+                    "Championnat d'Angleterre 2026 (Arsenal FC)",
+                    "Community Shield 2020 et 2023 (Arsenal FC)",
+                    "Trophée UNFP du meilleur espoir de Ligue 1 2022"
+                ],
+                clubs: [
+                    { club: "Arsenal FC", de: "07/2022", a: null },
+                    { club: "Olympique de Marseille", de: "07/2021", a: "06/2022" },
+                    { club: "OGC Nice", de: "01/2021", a: "06/2021" },
+                    { club: "AS Saint-Étienne", de: "07/2016", a: "06/2020" },
+                    { club: "FC Montfermeil", de: "07/2014", a: "06/2016" },
+                    { club: "AS Bondy", de: "01/2008", a: "06/2014" }
+                ]
+            }},
+            { nom: "Dayot Upamecano", poste: "Défenseur", club: "Bayern Munich", photo: "https://r2.thesportsdb.com/images/media/player/cutout/a1hyfj1756416177.png", details: {
+                dateNaissance: "27 octobre 1998",
+                lieuNaissance: "Évreux (Eure)",
+                taille: 185,
+                poids: 79,
+                piedPrefere: "Droit",
+                nbSelections: 38,
+                premierSelection: "05/09/2020 : Suède 0-1 France",
+                biographie: "Finaliste de la Coupe du monde 2022.",
+                stats: { matchsJoues: 38, titularisations: 36, minutesJouees: 3464, buts: 2 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 38, buts: 2 },
+                    { equipe: "Équipe de France Espoirs", matchs: 16, buts: 1 },
+                    { equipe: "U19", matchs: 6, buts: 0 },
+                    { equipe: "U18", matchs: 10, buts: 1 },
+                    { equipe: "U17", matchs: 12, buts: 0 },
+                    { equipe: "U16", matchs: 3, buts: 0 }
+                ],
+                palmares: [
+                    "Ligue des Nations de l'UEFA 2021",
+                    "Championnat d'Europe U17 2015",
+                    "Copa del Atlantico U18 2016",
+                    "Tournoi de Limoges U18 2015",
+                    "Championnat d'Allemagne 2022, 2023, 2025 et 2026 (FC Bayern Munich)",
+                    "Championnat d'Autriche 2016 et 2017 (FCRB Salzbourg)",
+                    "Coupe d'Allemagne 2026 (FC Bayern Munich)",
+                    "Coupe d'Autriche 2016 (FCRB Salzbourg)",
+                    "Supercoupe d'Allemagne 2021, 2022 et 2025 (FC Bayern Munich)"
+                ],
+                clubs: [
+                    { club: "FC Bayern Munich", de: "07/2021", a: null },
+                    { club: "RB Leipzig", de: "01/2017", a: "06/2021" },
+                    { club: "FCRB Salzbourg", de: "07/2015", a: "12/2017" },
+                    { club: "Valenciennes FC", de: "07/2013", a: "06/2015" },
+                    { club: "Évreux FC 27", de: "09/2009", a: "06/2013" },
+                    { club: "FC de Prey", de: "01/2008", a: "08/2009" },
+                    { club: "VS Angers", de: "11/2004", a: "12/2007" }
+                ]
+            }},
+            { nom: "N'Golo Kanté", poste: "Milieu", club: "Fenerbahçe", photo: "https://r2.thesportsdb.com/images/media/player/cutout/ld6low1719039995.png", details: {
+                dateNaissance: "29 mars 1991",
+                lieuNaissance: "Paris",
+                taille: 168,
+                poids: 70,
+                piedPrefere: "Droit",
+                nbSelections: 69,
+                premierSelection: "25/03/2016 : Pays-Bas 2-3 France",
+                biographie: "Finaliste de l'Euro 2016.",
+                stats: { matchsJoues: 69, titularisations: 59, minutesJouees: 5425, buts: 2 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 69, buts: 2 }
+                ],
+                palmares: [
+                    "Coupe du monde 2018",
+                    "Coupe du monde des clubs de la FIFA 2021 (Chelsea FC)",
+                    "Ligue des Champions 2021 (Chelsea FC)",
+                    "Ligue Europa 2019 (Chelsea FC)",
+                    "Supercoupe de l'UEFA 2021 (Chelsea FC)",
+                    "Championnat d'Angleterre 2016 (Leicester City FC) et 2017 (Chelsea FC)",
+                    "Championnat d'Arabie saoudite 2025 (Al-Ittihad Club)",
+                    "Coupe d'Angleterre 2018 (Chelsea FC)",
+                    "Coupe d'Arabie saoudite 2025 (Al-Ittihad Club)",
+                    "Chevalier de la Légion d'honneur",
+                    "Meilleur joueur du championnat d'Angleterre 2017",
+                    "Joueur français de l'année 2017 France Football",
+                    "Trophée UNFP du meilleur joueur français de l'étranger 2017 et 2018"
+                ],
+                clubs: [
+                    { club: "Fenerbahçe SK", de: "02/2026", a: null },
+                    { club: "Al-Ittihad Club", de: "07/2023", a: "02/2026" },
+                    { club: "Chelsea FC", de: "07/2016", a: "06/2023" },
+                    { club: "Leicester City FC", de: "08/2015", a: "06/2016" },
+                    { club: "SM Caen", de: "07/2013", a: "07/2015" },
+                    { club: "US Boulogne CO", de: "07/2010", a: "06/2013" },
+                    { club: "JS Suresnes", de: "09/2001", a: "06/2010" }
+                ]
+            }},
+            { nom: "Manu Koné", poste: "Milieu", club: "AS Roma", photo: "https://r2.thesportsdb.com/images/media/player/cutout/s4wyo21758815461.png", details: {
+                dateNaissance: "17 mai 2001",
+                lieuNaissance: "Colombes (Hauts-de-Seine)",
+                taille: 186,
+                poids: 77,
+                piedPrefere: "Droit",
+                nbSelections: 14,
+                premierSelection: "06/09/2024 : France 1-3 Italie",
+                biographie: "Médaille d'argent aux Jeux Olympiques 2024. Troisième de la Ligue des Nations de l'UEFA 2025.",
+                stats: { matchsJoues: 14, titularisations: 9, minutesJouees: 1002, buts: 0 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 14, buts: 0 },
+                    { equipe: "Équipe de France Espoirs", matchs: 11, buts: 0 },
+                    { equipe: "U19", matchs: 8, buts: 0 },
+                    { equipe: "U18", matchs: 5, buts: 1 },
+                    { equipe: "U23", matchs: 5, buts: 0 },
+                    { equipe: "Équipe de France Olympique masculine", matchs: 4, buts: 0 }
+                ],
+                clubs: [
+                    { club: "AS Rome", de: "09/2024", a: null },
+                    { club: "Borussia Mönchengladbach", de: "07/2021", a: "08/2024" },
+                    { club: "Toulouse FC", de: "07/2016", a: "06/2021" },
+                    { club: "AC Boulogne-Billancourt", de: "07/2015", a: "06/2016" },
+                    { club: "Paris FC", de: "11/2012", a: "06/2015" },
+                    { club: "AM Villeneuve-la-Garenne", de: "10/2007", a: "10/2012" }
+                ]
+            }},
+            { nom: "Adrien Rabiot", poste: "Milieu", club: "AC Milan", photo: "https://r2.thesportsdb.com/images/media/player/cutout/m2upnx1758893486.png", details: {
+                dateNaissance: "03 avril 1995",
+                lieuNaissance: "Saint-Maurice (Val-de-Marne)",
+                taille: 188,
+                poids: 72,
+                piedPrefere: "Gauche",
+                nbSelections: 59,
+                premierSelection: "15/11/2016 : France 0-0 Côte d'Ivoire",
+                biographie: "Finaliste de la Coupe du monde 2022. Troisième de la Ligue des Nations de l'UEFA 2025.",
+                stats: { matchsJoues: 59, titularisations: 49, minutesJouees: 4579, buts: 7 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 59, buts: 7 },
+                    { equipe: "Équipe de France Espoirs", matchs: 19, buts: 2 },
+                    { equipe: "U20", matchs: 6, buts: 0 },
+                    { equipe: "U19", matchs: 20, buts: 4 },
+                    { equipe: "U18", matchs: 1, buts: 1 },
+                    { equipe: "U17", matchs: 5, buts: 0 },
+                    { equipe: "U16", matchs: 2, buts: 0 }
+                ],
+                palmares: [
+                    "Ligue des Nations de l'UEFA 2021",
+                    "Championnat d'Italie 2020 (Juventus FC)",
+                    "Championnat de France de Ligue 1 2014, 2015, 2016, 2018 et 2019 (Paris Saint-Germain)",
+                    "Coupe de France 2016, 2017 et 2018 (Paris Saint-Germain)",
+                    "Coupe d'Italie 2021 et 2024 (Juventus Turin FC)",
+                    "Coupe de la Ligue 2014, 2015, 2016, 2017 et 2018 (Paris Saint-Germain)",
+                    "Supercoupe d'Italie 2020 (Juventus Turin FC)",
+                    "Trophée des Champions 2015, 2016, 2017 et 2018 (Paris Saint-Germain)",
+                    "Championnat national U17 2011 (Paris Saint-Germain)",
+                    "Tournoi du Val-de-Marne U16 2010",
+                    "Trophée UNFP du meilleur espoir de Ligue 1 2017"
+                ],
+                clubs: [
+                    { club: "AC Milan", de: "09/2025", a: null },
+                    { club: "Olympique de Marseille", de: "09/2024", a: "08/2025" },
+                    { club: "Juventus Turin FC", de: "07/2019", a: "06/2024" },
+                    { club: "Paris Saint-Germain", de: "07/2013", a: "06/2019" },
+                    { club: "Toulouse FC", de: "01/2013", a: "06/2013" },
+                    { club: "Paris Saint-Germain", de: "07/2010", a: "12/2012" },
+                    { club: "Pau FC", de: "03/2009", a: "06/2010" },
+                    { club: "US Créteil Lusitanos", de: "11/2004", a: "02/2009" },
+                    { club: "US Alfortville", de: "10/2003", a: "10/2004" },
+                    { club: "US Créteil Lusitanos", de: "10/2001", a: "09/2003" }
+                ]
+            }},
+            { nom: "Aurélien Tchouaméni", poste: "Milieu", club: "Real Madrid", photo: "https://r2.thesportsdb.com/images/media/player/cutout/4o417k1733653668.png", details: {
+                dateNaissance: "27 janvier 2000",
+                lieuNaissance: "Rouen (Seine-Maritime)",
+                taille: 185,
+                poids: 80,
+                piedPrefere: "Droit",
+                nbSelections: 46,
+                premierSelection: "01/09/2021 : France 1-1 Bosnie-Herzégovine",
+                biographie: "Finaliste de la Coupe du monde 2022. Troisième de la Ligue des Nations de l'UEFA 2025.",
+                stats: { matchsJoues: 46, titularisations: 40, minutesJouees: 3740, buts: 3 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 46, buts: 3 },
+                    { equipe: "Équipe de France Espoirs", matchs: 4, buts: 0 },
+                    { equipe: "U20", matchs: 5, buts: 0 },
+                    { equipe: "U19", matchs: 7, buts: 0 },
+                    { equipe: "U18", matchs: 11, buts: 1 },
+                    { equipe: "U17", matchs: 14, buts: 0 },
+                    { equipe: "U16", matchs: 11, buts: 0 }
+                ],
+                palmares: [
+                    "Ligue des Nations de l'UEFA 2021",
+                    "Ligue des champions de l'UEFA 2024 (Real Madrid CF)",
+                    "Coupe intercontinentale 2024 (Real Madrid CF)",
+                    "Coupe du monde des clubs 2022 (Real Madrid CF)",
+                    "Supercoupe d'Europe 2022 et 2024 (Real Madrid CF)",
+                    "Championnat d'Espagne 2024 (Real Madrid CF)",
+                    "Coupe du Roi 2023 (Real Madrid CF)",
+                    "Supercoupe d'Espagne 2024 (Real Madrid CF)",
+                    "Championnat National U19 2017 (FC Girondins de Bordeaux)",
+                    "Tournoi du Val-de-Marne U16 2015",
+                    "Trophée UNFP du meilleur Espoir de Ligue 1 2021"
+                ],
+                clubs: [
+                    { club: "Real Madrid CF", de: "07/2022", a: null },
+                    { club: "AS Monaco FC", de: "02/2020", a: "06/2022" },
+                    { club: "FC Girondins de Bordeaux", de: "07/2011", a: "01/2020" },
+                    { club: "SJ d'Artigues", de: "09/2006", a: "06/2011" }
+                ]
+            }},
+            { nom: "Warren Zaïre-Emery", poste: "Milieu", club: "Paris SG", photo: "https://r2.thesportsdb.com/images/media/player/cutout/fjxbac1766335583.png", details: {
+                dateNaissance: "08 mars 2006",
+                lieuNaissance: "Montreuil (Seine-Saint-Denis)",
+                taille: 178,
+                poids: 68,
+                piedPrefere: "Droit",
+                nbSelections: 11,
+                premierSelection: "18/11/2023 : France 14-0 Gibraltar",
+                biographie: "Troisième de la Ligue des Nations de l'UEFA 2025.",
+                stats: { matchsJoues: 11, titularisations: 5, minutesJouees: 426, buts: 1 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 11, buts: 1 },
+                    { equipe: "Équipe de France Espoirs", matchs: 6, buts: 0 },
+                    { equipe: "U19", matchs: 6, buts: 0 },
+                    { equipe: "U18", matchs: 6, buts: 0 },
+                    { equipe: "U17", matchs: 9, buts: 2 },
+                    { equipe: "U16", matchs: 2, buts: 0 }
+                ],
+                palmares: [
+                    "Championnat d'Europe U17 de l'UEFA 2022",
+                    "Ligue des champions de l'UEFA 2025 et 2026 (Paris Saint-Germain)",
+                    "Coupe intercontinentale de la FIFA 2025 (Paris Saint-Germain)",
+                    "Supercoupe de l'UEFA 2025 (Paris Saint-Germain)",
+                    "Championnat de France de Ligue 1 2023, 2024, 2025 et 2026 (Paris Saint-Germain)",
+                    "Coupe de France 2024 et 2025 (Paris Saint-Germain)",
+                    "Trophée des champions 2023, 2024 et 2025 (Paris Saint-Germain)"
+                ],
+                clubs: [
+                    { club: "Paris Saint-Germain", de: "04/2014", a: null },
+                    { club: "FCM Aubervilliers", de: "09/2011", a: "03/2014" }
+                ]
+            }},
+            { nom: "Maghnes Akliouche", poste: "Attaquant", club: "AS Monaco", photo: "https://r2.thesportsdb.com/images/media/player/cutout/2x2cfx1766237890.png", details: {
+                dateNaissance: "25 février 2002",
+                lieuNaissance: "Tremblay-en-France (Seine-Saint-Denis)",
+                taille: 183,
+                poids: 70,
+                piedPrefere: "Gauche",
+                nbSelections: 9,
+                premierSelection: "05/09/2025 : Ukraine 0-2 France",
+                biographie: "Médaille d'argent aux Jeux Olympiques 2024. Meilleur passeur du tournoi international Maurice-Revello U20 2022 (3 passes décisives).",
+                stats: { matchsJoues: 9, titularisations: 2, minutesJouees: 294, buts: 1 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 9, buts: 1 },
+                    { equipe: "Équipe de France Espoirs", matchs: 12, buts: 3 },
+                    { equipe: "U20", matchs: 7, buts: 3 },
+                    { equipe: "U23", matchs: 4, buts: 1 },
+                    { equipe: "Équipe de France Olympique masculine", matchs: 6, buts: 1 }
+                ],
+                palmares: [
+                    "Tournoi international Maurice-Revello U20 2022"
+                ],
+                clubs: [
+                    { club: "AS Monaco FC", de: "07/2017", a: null },
+                    { club: "Torcy Paris Vallée de la Marne Football US", de: "07/2014", a: "06/2017" },
+                    { club: "Villemomble Sports", de: "08/2008", a: "06/2014" }
+                ]
+            }},
+            { nom: "Bradley Barcola", poste: "Attaquant", club: "Paris SG", photo: "https://r2.thesportsdb.com/images/media/player/cutout/l2v71f1766334537.png", details: {
+                dateNaissance: "02 septembre 2002",
+                lieuNaissance: "Lyon (Rhône)",
+                taille: 182,
+                poids: 71,
+                piedPrefere: "Droit",
+                nbSelections: 20,
+                premierSelection: "05/06/2024 : France 3-0 Luxembourg",
+                biographie: "Troisième de la Ligue des Nations de l'UEFA 2025.",
+                stats: { matchsJoues: 20, titularisations: 8, minutesJouees: 873, buts: 3 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 20, buts: 3 },
+                    { equipe: "Équipe de France Espoirs", matchs: 13, buts: 4 },
+                    { equipe: "U20", matchs: 1, buts: 0 },
+                    { equipe: "U23", matchs: 1, buts: 0 }
+                ],
+                palmares: [
+                    "Ligue des champions de l'UEFA 2025 et 2026 (Paris Saint-Germain)",
+                    "Coupe Intercontinentale de la FIFA 2025 (Paris Saint-Germain)",
+                    "Supercoupe de l'UEFA 2025 (Paris Saint-Germain)",
+                    "Championnat de France de Ligue 1 2024, 2025 et 2026 (Paris Saint-Germain)",
+                    "Coupe de France 2024 et 2025 (Paris Saint-Germain)",
+                    "Trophée des champions 2023, 2024 et 2025 (Paris Saint-Germain)"
+                ],
+                clubs: [
+                    { club: "Paris Saint-Germain", de: "09/2023", a: null },
+                    { club: "Olympique Lyonnais", de: "07/2010", a: "08/2023" },
+                    { club: "AS des Buers Villeurbanne", de: "07/2008", a: "06/2010" }
+                ]
+            }},
             { nom: "Rayan Cherki", poste: "Attaquant", club: "Manchester City", photo: "https://r2.thesportsdb.com/images/media/player/cutout/emcyjy1769182115.png", details: {
                 dateNaissance: "17 août 2003",
                 lieuNaissance: "Pusignan (Rhône)",
@@ -773,12 +1783,223 @@ const effectifs = {
                     { club: "AS Saint-Priest", pays: "France", de: "08/2009", a: "06/2010" }
                 ]
             } },
-            { nom: "Ousmane Dembélé", poste: "Attaquant", club: "Paris SG", photo: "https://r2.thesportsdb.com/images/media/player/cutout/pstgy21766335175.png" },
-            { nom: "Désiré Doué", poste: "Attaquant", club: "Paris SG", photo: "https://r2.thesportsdb.com/images/media/player/cutout/5m0p4g1766335194.png" },
-            { nom: "Jean-Philippe Mateta", poste: "Attaquant", club: "Crystal Palace", photo: "https://r2.thesportsdb.com/images/media/player/cutout/32viwf1761492506.png" },
-            { nom: "Kylian Mbappé", poste: "Attaquant", club: "Real Madrid", photo: "https://r2.thesportsdb.com/images/media/player/cutout/h9u9vz1733653583.png" },
-            { nom: "Michael Olise", poste: "Attaquant", club: "Bayern Munich", photo: "https://r2.thesportsdb.com/images/media/player/cutout/r4vx6b1756408807.png" },
-            { nom: "Marcus Thuram", poste: "Attaquant", club: "Inter Milan", photo: "https://r2.thesportsdb.com/images/media/player/cutout/aykui01759408989.png" }
+            { nom: "Ousmane Dembélé", poste: "Attaquant", club: "Paris SG", photo: "https://r2.thesportsdb.com/images/media/player/cutout/pstgy21766335175.png", details: {
+                dateNaissance: "15 mai 1997",
+                lieuNaissance: "Vernon (Eure)",
+                taille: 178,
+                poids: 67,
+                piedPrefere: "Droit",
+                nbSelections: 59,
+                premierSelection: "01/09/2016 : Italie 1-3 France",
+                biographie: "Finaliste de la Coupe du monde 2022. Troisième de la Ligue des Nations de l'UEFA 2025. Vainqueur du Ballon d'Or 2025. Meilleur passeur du championnat d'Espagne 2022 (13 passes). Meilleur buteur de Ligue 1 2025 (21 buts).",
+                stats: { matchsJoues: 59, titularisations: 33, minutesJouees: 3046, buts: 7 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 59, buts: 7 },
+                    { equipe: "Équipe de France Espoirs", matchs: 4, buts: 0 },
+                    { equipe: "U19", matchs: 3, buts: 1 },
+                    { equipe: "U18", matchs: 5, buts: 0 },
+                    { equipe: "U17", matchs: 8, buts: 4 }
+                ],
+                palmares: [
+                    "Coupe du monde 2018",
+                    "Ligue des champions de l'UEFA 2025 et 2026 (Paris Saint-Germain)",
+                    "Coupe intercontinentale de la FIFA 2025 (Paris Saint-Germain)",
+                    "Supercoupe de l'UEFA 2025 (Paris Saint-Germain)",
+                    "Championnat de France de Ligue 1 2024, 2025 et 2026 (Paris Saint-Germain)",
+                    "Championnat d'Espagne 2018, 2019 et 2023 (FC Barcelone)",
+                    "Coupe de France 2024 et 2025 (Paris Saint-Germain)",
+                    "Coupe d'Espagne 2018 et 2021 (FC Barcelone)",
+                    "Coupe d'Allemagne 2017 (BVB Dortmund)",
+                    "Trophée des champions 2023, 2024 et 2025 (Paris Saint-Germain)",
+                    "Supercoupe d'Espagne 2018 et 2022 (FC Barcelone)",
+                    "Chevalier de la Légion d'honneur",
+                    "Vainqueur du Ballon d'Or 2025",
+                    "Meilleur joueur de la Ligue des champions 2025",
+                    "Trophée UNFP du meilleur joueur de Ligue 1 2025 et 2026",
+                    "Trophée UNFP du meilleur espoir de Ligue 1 2016",
+                    "Meilleur Espoir du championnat d'Allemagne 2017"
+                ],
+                clubs: [
+                    { club: "Paris Saint-Germain", de: "08/2023", a: null },
+                    { club: "FC Barcelone", de: "08/2017", a: "08/2023" },
+                    { club: "BVB Dortmund", de: "08/2016", a: "07/2017" },
+                    { club: "Stade Rennais FC", de: "11/2010", a: "07/2016" },
+                    { club: "Évreux FC 27", de: "07/2009", a: "10/2010" },
+                    { club: "ALM Évreux", de: "10/2004", a: "06/2009" }
+                ]
+            }},
+            { nom: "Désiré Doué", poste: "Attaquant", club: "Paris SG", photo: "https://r2.thesportsdb.com/images/media/player/cutout/5m0p4g1766335194.png", details: {
+                dateNaissance: "03 juin 2005",
+                lieuNaissance: "Angers (Maine-et-Loire)",
+                taille: 181,
+                poids: 72,
+                piedPrefere: "Droit",
+                nbSelections: 7,
+                premierSelection: "23/03/2025 : France 2-0 Croatie",
+                biographie: "Médaille d'argent aux Jeux Olympiques 2024. Troisième de la Ligue des Nations de l'UEFA 2025. Meilleur jeune joueur de la Coupe du monde des clubs de la FIFA 2025 et meilleur jeune de la Ligue des champions de l'UEFA 2025.",
+                stats: { matchsJoues: 7, titularisations: 4, minutesJouees: 362, buts: 2 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 7, buts: 2 },
+                    { equipe: "Équipe de France Espoirs", matchs: 4, buts: 1 },
+                    { equipe: "U19", matchs: 12, buts: 3 },
+                    { equipe: "U17", matchs: 17, buts: 7 },
+                    { equipe: "U23", matchs: 5, buts: 2 },
+                    { equipe: "Équipe de France Olympique masculine", matchs: 5, buts: 1 }
+                ],
+                palmares: [
+                    "Championnat d'Europe U17 de l'UEFA 2022",
+                    "Ligue des champions de l'UEFA 2025 et 2026 (Paris Saint-Germain)",
+                    "Coupe intercontinentale de la FIFA 2025 (Paris Saint-Germain)",
+                    "Supercoupe de l'UEFA 2025 (Paris Saint-Germain)",
+                    "Championnat de France de Ligue 1 2025 et 2026 (Paris Saint-Germain)",
+                    "Coupe de France 2025 (Paris Saint-Germain)",
+                    "Trophée des champions 2024 et 2025 (Paris Saint-Germain)",
+                    "Trophée UNFP du meilleur espoir de Ligue 1 2025 et 2026"
+                ],
+                clubs: [
+                    { club: "Paris Saint-Germain", de: "08/2024", a: null },
+                    { club: "Stade Rennais FC", de: "09/2011", a: "08/2024" }
+                ]
+            }},
+            { nom: "Jean-Philippe Mateta", poste: "Attaquant", club: "Crystal Palace", photo: "https://r2.thesportsdb.com/images/media/player/cutout/32viwf1761492506.png", details: {
+                dateNaissance: "28 juin 1997",
+                lieuNaissance: "Sevran (Seine-Saint-Denis)",
+                taille: 190,
+                poids: 84,
+                piedPrefere: "Droit",
+                nbSelections: 4,
+                premierSelection: "10/10/2025 : France 3-0 Azerbaïdjan",
+                biographie: "Médaille d'argent aux Jeux Olympiques 2024.",
+                stats: { matchsJoues: 4, titularisations: 2, minutesJouees: 240, buts: 2 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 4, buts: 2 },
+                    { equipe: "Équipe de France Espoirs", matchs: 11, buts: 3 },
+                    { equipe: "U19", matchs: 3, buts: 1 },
+                    { equipe: "U23", matchs: 2, buts: 2 },
+                    { equipe: "Équipe de France Olympique masculine", matchs: 6, buts: 5 }
+                ],
+                palmares: [
+                    "Ligue Conférence 2026 (Crystal Palace FC)",
+                    "Coupe d'Angleterre 2025 (Crystal Palace FC)",
+                    "Community Shield 2025 (Crystal Palace FC)",
+                    "Championnat de France National 2017 (LB de Châteauroux)"
+                ],
+                clubs: [
+                    { club: "Crystal Palace FC", de: "01/2021", a: null },
+                    { club: "FSV Mayence 05", de: "07/2018", a: "01/2021" },
+                    { club: "Le Havre AC", de: "07/2017", a: "06/2018" },
+                    { club: "Olympique Lyonnais", de: "09/2016", a: "06/2017" },
+                    { club: "LB de Châteauroux", de: "08/2014", a: "08/2016" },
+                    { club: "JA Drancy", de: "07/2011", a: "07/2014" },
+                    { club: "Sevran FC", de: "09/2010", a: "06/2011" },
+                    { club: "Olympique Sevran", de: "08/2006", a: "08/2010" }
+                ]
+            }},
+            { nom: "Kylian Mbappé", poste: "Attaquant", club: "Real Madrid", photo: "https://r2.thesportsdb.com/images/media/player/cutout/h9u9vz1733653583.png", details: {
+                dateNaissance: "20 décembre 1998",
+                lieuNaissance: "Paris 19e",
+                taille: 178,
+                poids: 75,
+                piedPrefere: "Droit",
+                nbSelections: 98,
+                premierSelection: "25/03/2017 : Luxembourg 1-3 France",
+                biographie: "Finaliste, Soulier d'or (8 buts) et Ballon d'argent de la Coupe du monde 2022. Troisième de la Ligue des Nations de l'UEFA 2025. Meilleur buteur (2) et passeur (2) de la Ligue des Nations 2021. Trophée Gerd-Müller 2024 (meilleur buteur de l'année, 52 buts). Meilleur buteur de la Ligue des champions 2026 (15 buts). Meilleur buteur de Ligue 1 2019, 2020, 2021, 2022, 2023 et 2024. Meilleur buteur du championnat d'Espagne 2025 et 2026.",
+                stats: { matchsJoues: 98, titularisations: 83, minutesJouees: 7864, buts: 56 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 98, buts: 56 },
+                    { equipe: "U19", matchs: 11, buts: 7 },
+                    { equipe: "U17", matchs: 2, buts: 0 }
+                ],
+                palmares: [
+                    "Coupe du monde 2018",
+                    "Ligue des Nations de l'UEFA 2021",
+                    "Championnat d'Europe U19 2016",
+                    "Coupe intercontinentale 2024 (Real Madrid CF)",
+                    "Supercoupe d'Europe 2024 (Real Madrid CF)",
+                    "Championnat de France de Ligue 1 2017 (AS Monaco FC), 2018, 2019, 2020, 2022, 2023 et 2024 (Paris Saint-Germain)",
+                    "Coupe de France 2018, 2020, 2021 et 2024 (Paris Saint-Germain)",
+                    "Coupe de la Ligue 2018 (Paris Saint-Germain)",
+                    "Trophée des champions 2018, 2019, 2020 et 2023 (Paris Saint-Germain)",
+                    "Coupe Gambardella 2016 (AS Monaco FC)",
+                    "Chevalier de la Légion d'honneur",
+                    "Meilleur jeune de la Coupe du monde 2018",
+                    "Soulier d'or européen 2025",
+                    "Trophée Kopa 2018",
+                    "Trophée UNFP du meilleur joueur français à l'étranger 2025",
+                    "Trophée UNFP du meilleur joueur de Ligue 1 2019, 2021, 2022 et 2023",
+                    "Trophée UNFP du meilleur espoir de Ligue 1 2017, 2018 et 2019"
+                ],
+                clubs: [
+                    { club: "Real Madrid CF", de: "07/2024", a: null },
+                    { club: "Paris Saint-Germain", de: "09/2017", a: "06/2024" },
+                    { club: "AS Monaco FC", de: "07/2013", a: "08/2017" },
+                    { club: "INF Clairefontaine", de: "09/2011", a: "06/2013" },
+                    { club: "AS Bondy", de: "10/2004", a: "08/2011" }
+                ]
+            }},
+            { nom: "Michael Olise", poste: "Attaquant", club: "Bayern Munich", photo: "https://r2.thesportsdb.com/images/media/player/cutout/r4vx6b1756408807.png", details: {
+                dateNaissance: "12 décembre 2001",
+                lieuNaissance: "Londres (Angleterre)",
+                taille: 178,
+                poids: 71,
+                piedPrefere: "Gauche",
+                nbSelections: 17,
+                premierSelection: "06/09/2024 : France 1-3 Italie",
+                biographie: "Médaille d'argent et meilleur passeur (5 passes décisives) des Jeux Olympiques 2024. Troisième de la Ligue des Nations de l'UEFA 2025. Meilleur joueur du championnat d'Allemagne 2026. Meilleur passeur du championnat d'Allemagne 2025 (15) et 2026 (21). Co-meilleur passeur de la Ligue des champions 2026 (8 passes décisives).",
+                stats: { matchsJoues: 17, titularisations: 13, minutesJouees: 1113, buts: 7 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 17, buts: 7 },
+                    { equipe: "Équipe de France Espoirs", matchs: 7, buts: 1 },
+                    { equipe: "U18", matchs: 2, buts: 0 },
+                    { equipe: "U23", matchs: 3, buts: 3 },
+                    { equipe: "Équipe de France Olympique masculine", matchs: 6, buts: 2 }
+                ],
+                palmares: [
+                    "Championnat d'Allemagne 2025 et 2026 (FC Bayern Munich)",
+                    "Coupe d'Allemagne 2026 (FC Bayern Munich)",
+                    "Supercoupe d'Allemagne 2025 (FC Bayern Munich)",
+                    "Trophée UNFP du meilleur joueur français de l'étranger 2026"
+                ],
+                clubs: [
+                    { club: "FC Bayern Munich", de: "07/2024", a: null },
+                    { club: "Crystal Palace FC", de: "07/2021", a: "07/2024" },
+                    { club: "Reading FC", de: "07/2015", a: "06/2021" }
+                ]
+            }},
+            { nom: "Marcus Thuram", poste: "Attaquant", club: "Inter Milan", photo: "https://r2.thesportsdb.com/images/media/player/cutout/aykui01759408989.png", details: {
+                dateNaissance: "06 août 1997",
+                lieuNaissance: "Parme (Italie)",
+                taille: 192,
+                poids: 88,
+                piedPrefere: "Droit",
+                nbSelections: 34,
+                premierSelection: "11/11/2020 : France 0-2 Finlande",
+                biographie: "Finaliste de la Coupe du monde 2022. Troisième de la Ligue des Nations de l'UEFA 2025.",
+                stats: { matchsJoues: 34, titularisations: 15, minutesJouees: 1719, buts: 3 },
+                parcours: [
+                    { equipe: "Équipe de France", matchs: 34, buts: 3 },
+                    { equipe: "Équipe de France Espoirs", matchs: 5, buts: 0 },
+                    { equipe: "U20", matchs: 11, buts: 3 },
+                    { equipe: "U19", matchs: 15, buts: 3 },
+                    { equipe: "U18", matchs: 5, buts: 3 },
+                    { equipe: "U17", matchs: 4, buts: 1 }
+                ],
+                palmares: [
+                    "Championnat d'Europe U19 2016",
+                    "Championnat d'Italie 2024 et 2026 (FC Inter Milan)",
+                    "Coupe d'Italie 2026 (FC Inter Milan)",
+                    "Supercoupe d'Italie 2023 (FC Inter Milan)",
+                    "Coupe Gambardella 2015 (FC Sochaux-Montbéliard)"
+                ],
+                clubs: [
+                    { club: "FC Inter Milan", de: "07/2023", a: null },
+                    { club: "Borussia Mönchengladbach", de: "07/2019", a: "06/2023" },
+                    { club: "EA de Guingamp", de: "07/2017", a: "07/2019" },
+                    { club: "FC Sochaux-Montbéliard", de: "07/2012", a: "06/2017" },
+                    { club: "AC Boulogne-Billancourt", de: "07/2010", a: "06/2012" },
+                    { club: "Neuilly Olympique", de: "10/2007", a: "06/2010" }
+                ]
+            }}
         ]
     },
     "Germany": {
