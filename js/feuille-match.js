@@ -464,6 +464,32 @@ function ratingColor(r) {
     return 'fm-r-low'
 }
 
+const POSTE_COLORS = { 'Gardien': '#27ae60', 'Défenseur': '#2980b9', 'Milieu': '#d97706', 'Attaquant': '#c0392b' }
+const POSTE_LABELS = { 'Gardien': 'GK', 'Défenseur': 'DEF', 'Milieu': 'MIL', 'Attaquant': 'ATT' }
+
+function posteFromEffectifs(playerApiName, frenchTeamName) {
+    if (!playerApiName || typeof effectifs === 'undefined') return null
+    const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+    const tokens = playerApiName.trim().split(' ')
+    const lastToken = tokens[tokens.length - 1]
+    const lastName = /^[A-Z]\.$/.test(lastToken) ? tokens.slice(0, -1).join(' ') : playerApiName.trim()
+    if (!lastName) return null
+    const lastNorm = norm(lastName)
+
+    let joueurs = null
+    if (frenchTeamName && typeof traductions !== 'undefined') {
+        const enKey = Object.entries(traductions).find(([, fr]) => fr === frenchTeamName)?.[0]
+        if (enKey && effectifs[enKey]) joueurs = effectifs[enKey].joueurs
+    }
+    const pools = joueurs ? [joueurs] : Object.values(effectifs).map(t => t.joueurs || [])
+    for (const pool of pools) {
+        for (const j of pool) {
+            if (norm(j.nom).endsWith(lastNorm)) return j.poste
+        }
+    }
+    return null
+}
+
 function renderLineupSide(lineups, side, teamName, fill, text) {
     if (!lineups) return '<p class="fm-empty">Compositions non disponibles.</p>'
     const formation = lineups.formation?.[side] || ''
@@ -475,10 +501,14 @@ function renderLineupSide(lineups, side, teamName, fill, text) {
     const playerRow = p => {
         const isGK = (p.role || '').includes('G')
         const evts = (p.incidents || []).map(i => iconEvenement(i.type)).join(' ')
+        const poste = posteFromEffectifs(p.name || '', teamName)
+        const posteBadge = poste
+            ? `<span class="fm-poste-badge" style="background:${POSTE_COLORS[poste]}">${POSTE_LABELS[poste]}</span>`
+            : isGK ? `<span class="fm-poste-badge" style="background:#27ae60">GK</span>` : ''
         return `<li class="fm-bench-player">
             <span class="fm-bench-num">${p.number || ''}</span>
-            <span class="fm-bench-name">${p.name || ''}${isGK ? ' <span class="fm-gk-badge">GK</span>' : ''}${p.motm ? ' ⭐' : ''}${evts ? ` ${evts}` : ''}</span>
-            ${p.rating ? `<span class="fm-bench-rating ${ratingColor(p.rating)}">${parseFloat(p.rating).toFixed(1)}</span>` : ''}
+            <span class="fm-bench-name">${p.name || ''}${p.motm ? ' ⭐' : ''}${evts ? ` ${evts}` : ''}</span>
+            <span class="fm-bench-right">${posteBadge}${p.rating ? `<span class="fm-bench-rating ${ratingColor(p.rating)}">${parseFloat(p.rating).toFixed(1)}</span>` : ''}</span>
         </li>`
     }
 

@@ -2860,6 +2860,8 @@ details[open] .fm-bench-summary::before { transform: rotate(90deg); }
     font-size: 0.74rem;
     transition: background 0.1s;
 }
+.fm-bench-right { display: flex; align-items: center; gap: 0.3rem; }
+.fm-poste-badge { font-size: 0.56rem; font-weight: 800; color: #fff; padding: 0.07rem 0.28rem; border-radius: 3px; letter-spacing: 0.02em; }
 .fm-bench-player:hover { background: var(--bg-card); }
 .fm-bench-num { font-size: 0.65rem; font-weight: 800; color: var(--text-light); text-align: center; }
 .fm-bench-name { font-weight: 600; font-size: 0.74rem; }
