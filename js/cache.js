@@ -14,7 +14,7 @@ async function apiFetch(endpoint) {
             if (Date.now() - ts < ttl) return data
         }
     } catch {}
-    const data = await fetch('http://localhost:3000/api/' + endpoint).then(r => r.json())
+    const data = await fetch('https://worldcup26.ir/get/' + endpoint).then(r => r.json())
     try { localStorage.setItem(key, JSON.stringify({ ts: Date.now(), data })) } catch {}
     return data
 }

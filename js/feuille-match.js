@@ -743,8 +743,23 @@ async function initDetailPage(id) {
 async function fetchAndRenderDetail(id) {
     document.getElementById('fm-detail-inner').innerHTML = '<p class="fm-loading">Connexion à l\'API…</p>'
     try {
-        const json = await fetch(`${BASE}/rapid/wc/match/${id}/full`).then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() })
-        const d = json.data || {}
+        // Essayer d'abord le cache disque servi par XAMPP (ne nécessite pas le serveur node)
+        let d = null
+        try {
+            const diskRes = await fetch(`../match_cache/${id}.json`)
+            if (diskRes.ok) {
+                const disk = await diskRes.json()
+                const hasData = disk.stats?.length || disk.lineups || disk.commentary?.incidents?.length
+                if (hasData) d = disk
+            }
+        } catch {}
+
+        // Fallback : serveur node (matchs en direct ou cache disque absent)
+        if (!d) {
+            const json = await fetch(`${BASE}/rapid/wc/match/${id}/full`).then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() })
+            d = json.data || {}
+        }
+
         const data = {
             detail:     d.detail     || {},
             commentary: d.commentary || {},

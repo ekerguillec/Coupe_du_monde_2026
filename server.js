@@ -229,14 +229,13 @@ app.get('/rapid/wc/match/:id/full', async (req, res) => {
 
     const base = 'https://world-cup-2026-live-api.p.rapidapi.com'
     try {
-        const [detRes, comRes, statRes, linRes] = await Promise.all([
-            fetch(`${base}/wc/match/${id}`,            { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
+        const [comRes, statRes, linRes] = await Promise.all([
             fetch(`${base}/wc/match/${id}/commentary`, { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
             fetch(`${base}/wc/match/${id}/stats`,      { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
             fetch(`${base}/wc/match/${id}/lineups`,    { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
         ])
         const combined = {
-            detail:     detRes.data  || {},
+            detail:     {},
             commentary: comRes.data  || {},
             stats:      statRes.data || [],
             lineups:    linRes.data  || null

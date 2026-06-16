@@ -288,7 +288,7 @@ const effectifs = {
             { annee: 2026, phase: "—" }
         ],
         joueurs: [
-            { nom: "Alisson", poste: "Gardien", club: "Liverpool", details: {
+            { nom: "Alisson", poste: "Gardien", club: "Liverpool", photo: "../images/Brésil/Alisson.png", details: {
                 dateNaissance: "02 octobre 1992",
                 lieuNaissance: "Novo Hamburgo (Rio Grande do Sul)",
                 taille: 193, poids: 91, piedPrefere: "Droit",
@@ -305,7 +305,7 @@ const effectifs = {
                     { club: "SC Internacional", de: "01/2010", a: "07/2016" }
                 ]
             }},
-            { nom: "Éderson", poste: "Gardien", club: "Fenerbahce", details: {
+            { nom: "Éderson", poste: "Gardien", club: "Fenerbahce", photo: "../images/Brésil/Ederson.png", details: {
                 dateNaissance: "17 août 1993",
                 lieuNaissance: "Osasco (São Paulo)",
                 taille: 188, poids: 89, piedPrefere: "Gauche",
@@ -324,7 +324,7 @@ const effectifs = {
                     { club: "Rio Ave FC", de: "07/2012", a: "06/2015" }
                 ]
             }},
-            { nom: "Weverton", poste: "Gardien", club: "Grêmio", details: {
+            { nom: "Weverton", poste: "Gardien", club: "Grêmio", photo: "../images/Brésil/Weverton.png", details: {
                 dateNaissance: "13 décembre 1987",
                 lieuNaissance: "Caxias do Sul (Rio Grande do Sul)",
                 taille: 188, poids: 84, piedPrefere: "Droit",
@@ -342,7 +342,7 @@ const effectifs = {
                     { club: "Athletico Paranaense", de: "01/2009", a: "12/2014" }
                 ]
             }},
-            { nom: "Alex Sandro", poste: "Défenseur", club: "Flamengo", details: {
+            { nom: "Alex Sandro", poste: "Défenseur", club: "Flamengo", photo: "../images/Brésil/Alex Sandro.png", details: {
                 dateNaissance: "26 janvier 1991",
                 lieuNaissance: "Catanduva (São Paulo)",
                 taille: 181, poids: 77, piedPrefere: "Gauche",
@@ -361,7 +361,7 @@ const effectifs = {
                     { club: "Santos FC", de: "07/2009", a: "06/2012" }
                 ]
             }},
-            { nom: "Bremer", poste: "Défenseur", club: "Juventus", details: {
+            { nom: "Bremer", poste: "Défenseur", club: "Juventus", photo: "../images/Brésil/Bremer.png", details: {
                 dateNaissance: "18 mars 1997",
                 lieuNaissance: "Itapitanga (Bahia)",
                 taille: 188, poids: 83, piedPrefere: "Droit",
@@ -375,7 +375,7 @@ const effectifs = {
                     { club: "Atletico Mineiro", de: "01/2016", a: "06/2018" }
                 ]
             }},
-            { nom: "Danilo", poste: "Défenseur", club: "Flamengo", details: {
+            { nom: "Danilo", poste: "Défenseur", club: "Flamengo", photo: "../images/Brésil/Danilo.png", details: {
                 dateNaissance: "15 juillet 1991",
                 lieuNaissance: "Bicas (Minas Gerais)",
                 taille: 180, poids: 75, piedPrefere: "Droit",
@@ -396,7 +396,7 @@ const effectifs = {
                     { club: "América Mineiro", de: "01/2007", a: "06/2009" }
                 ]
             }},
-            { nom: "Douglas Santos", poste: "Défenseur", club: "Zenit", details: {
+            { nom: "Douglas Santos", poste: "Défenseur", club: "Zenit", photo: "https://r2.thesportsdb.com/images/media/player/cutout/w5w8j71692197353.png", details: {
                 dateNaissance: "22 juin 1994",
                 lieuNaissance: "Belo Horizonte (Minas Gerais)",
                 taille: 178, poids: 72, piedPrefere: "Gauche",
@@ -407,7 +407,7 @@ const effectifs = {
                     { club: "Athletico Paranaense", de: "01/2013", a: "06/2016" }
                 ]
             }},
-            { nom: "Gabriel Magalhães", poste: "Défenseur", club: "Arsenal", details: {
+            { nom: "Gabriel Magalhães", poste: "Défenseur", club: "Arsenal", photo: "https://r2.thesportsdb.com/images/media/player/cutout/trz5x71769331076.png", details: {
                 dateNaissance: "19 décembre 1997",
                 lieuNaissance: "São Paulo (São Paulo)",
                 taille: 191, poids: 88, piedPrefere: "Gauche",
@@ -422,7 +422,7 @@ const effectifs = {
                     { club: "Avai FC", de: "01/2016", a: "06/2017" }
                 ]
             }},
-            { nom: "Léo Pereira", poste: "Défenseur", club: "Flamengo", details: {
+            { nom: "Léo Pereira", poste: "Défenseur", club: "Flamengo", photo: "https://r2.thesportsdb.com/images/media/player/cutout/cuvmse1750919246.png", details: {
                 dateNaissance: "28 avril 1996",
                 lieuNaissance: "São Paulo (São Paulo)",
                 taille: 187, poids: 81, piedPrefere: "Droit",
@@ -436,7 +436,7 @@ const effectifs = {
                     { club: "Athletico Paranaense", de: "01/2018", a: "12/2021" }
                 ]
             }},
-            { nom: "Marquinhos", poste: "Défenseur", club: "Paris SG", details: {
+            { nom: "Marquinhos", poste: "Défenseur", club: "Paris SG", photo: "../images/Brésil/Marquinhos.png", details: {
                 dateNaissance: "14 mai 1994",
                 lieuNaissance: "São Paulo (São Paulo)",
                 taille: 183, poids: 75, piedPrefere: "Droit",
@@ -453,7 +453,7 @@ const effectifs = {
                     { club: "SC Corinthians", de: "01/2010", a: "06/2012" }
                 ]
             }},
-            { nom: "Roger Ibañez", poste: "Défenseur", club: "Al Ahli", details: {
+            { nom: "Roger Ibañez", poste: "Défenseur", club: "Al Ahli", photo: "https://r2.thesportsdb.com/images/media/player/cutout/v5oj711771663666.png", details: {
                 dateNaissance: "23 novembre 1998",
                 lieuNaissance: "Mariana (Minas Gerais)",
                 taille: 187, poids: 78, piedPrefere: "Gauche",
@@ -465,7 +465,7 @@ const effectifs = {
                     { club: "Fluminense FC", de: "01/2018", a: "06/2019" }
                 ]
             }},
-            { nom: "Wesley", poste: "Défenseur", club: "AS Roma", details: {
+            { nom: "Wesley", poste: "Défenseur", club: "AS Roma", photo: "https://r2.thesportsdb.com/images/media/player/cutout/0vz0rp1758815906.png", details: {
                 dateNaissance: "26 novembre 2003",
                 lieuNaissance: "São Paulo (São Paulo)",
                 taille: 183, poids: 76, piedPrefere: "Droit",
@@ -475,7 +475,7 @@ const effectifs = {
                     { club: "Flamengo", de: "01/2022", a: "06/2025" }
                 ]
             }},
-            { nom: "Bruno Guimarães", poste: "Milieu", club: "Newcastle", details: {
+            { nom: "Bruno Guimarães", poste: "Milieu", club: "Newcastle", photo: "../images/Brésil/B. Guimaraes.png", details: {
                 dateNaissance: "16 novembre 1997",
                 lieuNaissance: "Rio de Janeiro (Rio de Janeiro)",
                 taille: 183, poids: 80, piedPrefere: "Droit",
@@ -490,7 +490,7 @@ const effectifs = {
                     { club: "Athletico Paranaense", de: "01/2017", a: "12/2019" }
                 ]
             }},
-            { nom: "Casemiro", poste: "Milieu", club: "Manchester United", details: {
+            { nom: "Casemiro", poste: "Milieu", club: "Manchester United", photo: "../images/Brésil/Casemiro.png", details: {
                 dateNaissance: "23 février 1992",
                 lieuNaissance: "São José dos Campos (São Paulo)",
                 taille: 185, poids: 84, piedPrefere: "Droit",
@@ -509,7 +509,7 @@ const effectifs = {
                     { club: "São Paulo FC", de: "01/2009", a: "06/2012" }
                 ]
             }},
-            { nom: "Danilo Santos", poste: "Milieu", club: "Botafogo", details: {
+            { nom: "Danilo Santos", poste: "Milieu", club: "Botafogo", photo: "https://r2.thesportsdb.com/images/media/player/cutout/uo3gja1755115907.png", details: {
                 dateNaissance: "29 janvier 2001",
                 lieuNaissance: "Presidente Prudente (São Paulo)",
                 taille: 182, poids: 76, piedPrefere: "Droit",
@@ -523,7 +523,7 @@ const effectifs = {
                     { club: "Athletico Paranaense", de: "01/2019", a: "12/2021" }
                 ]
             }},
-            { nom: "Fabinho", poste: "Milieu", club: "Al Ittihad", details: {
+            { nom: "Fabinho", poste: "Milieu", club: "Al Ittihad", photo: "../images/Brésil/Fabinho.png", details: {
                 dateNaissance: "23 octobre 1993",
                 lieuNaissance: "Campinas (São Paulo)",
                 taille: 188, poids: 83, piedPrefere: "Droit",
@@ -543,7 +543,7 @@ const effectifs = {
                     { club: "Fluminense FC", de: "01/2011", a: "06/2012" }
                 ]
             }},
-            { nom: "Lucas Paquetá", poste: "Milieu", club: "Flamengo", details: {
+            { nom: "Lucas Paquetá", poste: "Milieu", club: "Flamengo", photo: "../images/Brésil/L. Paqueta.png", details: {
                 dateNaissance: "27 août 1997",
                 lieuNaissance: "Rio de Janeiro (Rio de Janeiro)",
                 taille: 180, poids: 77, piedPrefere: "Gauche",
@@ -562,7 +562,7 @@ const effectifs = {
                     { club: "Flamengo", de: "01/2016", a: "12/2018" }
                 ]
             }},
-            { nom: "Endrick", poste: "Attaquant", club: "Lyon", details: {
+            { nom: "Endrick", poste: "Attaquant", club: "Lyon", photo: "https://r2.thesportsdb.com/images/media/player/cutout/5yb3rv1733653315.png", details: {
                 dateNaissance: "21 juillet 2006",
                 lieuNaissance: "Taguatinga (District Fédéral)",
                 taille: 173, poids: 68, piedPrefere: "Droit",
@@ -577,7 +577,7 @@ const effectifs = {
                     { club: "Palmeiras", de: "01/2022", a: "06/2024" }
                 ]
             }},
-            { nom: "Gabriel Martinelli", poste: "Attaquant", club: "Arsenal", details: {
+            { nom: "Gabriel Martinelli", poste: "Attaquant", club: "Arsenal", photo: "../images/Brésil/G. Martinelli.png", details: {
                 dateNaissance: "18 juin 2001",
                 lieuNaissance: "Guarulhos (São Paulo)",
                 taille: 175, poids: 75, piedPrefere: "Gauche",
@@ -590,7 +590,7 @@ const effectifs = {
                     { club: "Ituano FC", de: "01/2019", a: "06/2019" }
                 ]
             }},
-            { nom: "Igor Thiago", poste: "Attaquant", club: "Brentford", details: {
+            { nom: "Igor Thiago", poste: "Attaquant", club: "Brentford", photo: "https://r2.thesportsdb.com/images/media/player/cutout/irs8wu1765971888.png", details: {
                 dateNaissance: "13 septembre 2000",
                 lieuNaissance: "Rio Verde (Goiás)",
                 taille: 185, poids: 80, piedPrefere: "Droit",
@@ -601,7 +601,7 @@ const effectifs = {
                     { club: "Criciúma EC", de: "01/2020", a: "06/2022" }
                 ]
             }},
-            { nom: "Luiz Henrique", poste: "Attaquant", club: "Zenit", details: {
+            { nom: "Luiz Henrique", poste: "Attaquant", club: "Zenit", photo: "https://r2.thesportsdb.com/images/media/player/cutout/9ymdxw1673688657.png", details: {
                 dateNaissance: "13 juin 2001",
                 lieuNaissance: "Salvador (Bahia)",
                 taille: 177, poids: 72, piedPrefere: "Droit",
@@ -613,7 +613,7 @@ const effectifs = {
                     { club: "Fluminense FC", de: "01/2019", a: "06/2021" }
                 ]
             }},
-            { nom: "Matheus Cunha", poste: "Attaquant", club: "Manchester United", details: {
+            { nom: "Matheus Cunha", poste: "Attaquant", club: "Manchester United", photo: "https://r2.thesportsdb.com/images/media/player/cutout/29x61e1762020281.png", details: {
                 dateNaissance: "27 mai 1999",
                 lieuNaissance: "Petrópolis (Rio de Janeiro)",
                 taille: 180, poids: 77, piedPrefere: "Droit",
@@ -627,7 +627,7 @@ const effectifs = {
                     { club: "Coritiba FC", de: "01/2017", a: "06/2019" }
                 ]
             }},
-            { nom: "Neymar", poste: "Attaquant", club: "Santos", details: {
+            { nom: "Neymar", poste: "Attaquant", club: "Santos", photo: "../images/Brésil/Neymar.png", details: {
                 dateNaissance: "05 février 1992",
                 lieuNaissance: "Mogi das Cruzes (São Paulo)",
                 taille: 175, poids: 68, piedPrefere: "Droit",
@@ -651,7 +651,7 @@ const effectifs = {
                     { club: "Santos FC", de: "01/2009", a: "05/2013" }
                 ]
             }},
-            { nom: "Raphinha", poste: "Attaquant", club: "Barcelone", details: {
+            { nom: "Raphinha", poste: "Attaquant", club: "Barcelone", photo: "../images/Brésil/Raphinha.png", details: {
                 dateNaissance: "14 décembre 1996",
                 lieuNaissance: "Porto Alegre (Rio Grande do Sul)",
                 taille: 176, poids: 68, piedPrefere: "Droit",
@@ -668,7 +668,7 @@ const effectifs = {
                     { club: "Avai FC", de: "01/2015", a: "06/2018" }
                 ]
             }},
-            { nom: "Rayan", poste: "Attaquant", club: "Bournemouth", details: {
+            { nom: "Rayan", poste: "Attaquant", club: "Bournemouth", photo: "https://r2.thesportsdb.com/images/media/player/cutout/0atutm1771748327.png", details: {
                 dateNaissance: "19 juin 2005",
                 lieuNaissance: "São Paulo (São Paulo)",
                 taille: 178, poids: 70, piedPrefere: "Droit",
@@ -678,7 +678,7 @@ const effectifs = {
                     { club: "Flamengo", de: "01/2022", a: "06/2024" }
                 ]
             }},
-            { nom: "Vinícius Júnior", poste: "Attaquant", club: "Real Madrid", details: {
+            { nom: "Vinícius Júnior", poste: "Attaquant", club: "Real Madrid", photo: "../images/Brésil/Vinicius Jr.png", details: {
                 dateNaissance: "12 juillet 2000",
                 lieuNaissance: "São Gonçalo (Rio de Janeiro)",
                 taille: 176, poids: 73, piedPrefere: "Droit",
@@ -2389,32 +2389,32 @@ const effectifs = {
             { annee: 2026, phase: "—" }
         ],
         joueurs: [
-            { nom: "Yassine Bounou", poste: "Gardien", club: "Al Hilal" },
+            { nom: "Yassine Bounou", poste: "Gardien", club: "Al Hilal", photo: "https://r2.thesportsdb.com/images/media/player/cutout/u0pjgc1658436080.png" },
             { nom: "Munir El Kajoui", poste: "Gardien", club: "RS Berkane" },
-            { nom: "Reda Tagnaouti", poste: "Gardien", club: "AS Far" },
-            { nom: "Noussair Mazraoui", poste: "Défenseur", club: "Manchester United" },
-            { nom: "Anass Salah-Eddine", poste: "Défenseur", club: "PSV Eindhoven" },
-            { nom: "Youssef Belammari", poste: "Défenseur", club: "Al Ahly" },
-            { nom: "Achraf Hakimi", poste: "Défenseur", club: "Paris SG" },
-            { nom: "Zakaria El Ouahdi", poste: "Défenseur", club: "Racing Genk" },
-            { nom: "Chadi Riad", poste: "Défenseur", club: "Crystal Palace" },
-            { nom: "Nayef Aguerd", poste: "Défenseur", club: "Marseille" },
-            { nom: "Redouane Halhal", poste: "Défenseur", club: "KV Mechelen" },
-            { nom: "Issa Diop", poste: "Défenseur", club: "Fulham" },
-            { nom: "Samir El Mourabet", poste: "Milieu", club: "Strasbourg" },
-            { nom: "Ayyoub Bouaddi", poste: "Milieu", club: "Lille" },
-            { nom: "Neil El Aynaoui", poste: "Milieu", club: "AS Roma" },
-            { nom: "Sofyan Amrabat", poste: "Milieu", club: "Real Betis" },
-            { nom: "Azzedine Ounahi", poste: "Milieu", club: "Girona" },
-            { nom: "Bilal El Khannouss", poste: "Milieu", club: "Stuttgart" },
-            { nom: "Ismael Saibari", poste: "Milieu", club: "PSV Eindhoven" },
-            { nom: "Abde Ezzalzouli", poste: "Attaquant", club: "Real Betis" },
-            { nom: "Chemsdine Talbi", poste: "Attaquant", club: "Sunderland" },
-            { nom: "Soufiane Rahimi", poste: "Attaquant", club: "Al Ain" },
-            { nom: "Ayoub El Kaabi", poste: "Attaquant", club: "Olympiacos" },
-            { nom: "Brahim Díaz", poste: "Attaquant", club: "Real Madrid" },
-            { nom: "Gessime Yassine", poste: "Attaquant", club: "Strasbourg" },
-            { nom: "Ayoube Amaimouni", poste: "Attaquant", club: "Eintracht Frankfurt" }
+            { nom: "Reda Tagnaouti", poste: "Gardien", club: "AS Far", photo: "https://r2.thesportsdb.com/images/media/player/cutout/l3wlwr1668957986.png" },
+            { nom: "Noussair Mazraoui", poste: "Défenseur", club: "Manchester United", photo: "../images/Maroc/N. Mazraoui.png" },
+            { nom: "Anass Salah-Eddine", poste: "Défenseur", club: "PSV Eindhoven", photo: "https://r2.thesportsdb.com/images/media/player/cutout/ff3c281762288806.png" },
+            { nom: "Youssef Belammari", poste: "Défenseur", club: "Al Ahly", photo: "https://r2.thesportsdb.com/images/media/player/cutout/3ikvx11779879917.png" },
+            { nom: "Achraf Hakimi", poste: "Défenseur", club: "Paris SG", photo: "../images/Maroc/A. Hakimi.png" },
+            { nom: "Zakaria El Ouahdi", poste: "Défenseur", club: "Racing Genk", photo: "https://r2.thesportsdb.com/images/media/player/cutout/2kyulz1767641969.png" },
+            { nom: "Chadi Riad", poste: "Défenseur", club: "Crystal Palace", photo: "../images/Maroc/C. Riad.png" },
+            { nom: "Nayef Aguerd", poste: "Défenseur", club: "Marseille", photo: "../images/Maroc/N. Aguerd.png" },
+            { nom: "Redouane Halhal", poste: "Défenseur", club: "KV Mechelen", photo: "https://r2.thesportsdb.com/images/media/player/cutout/95ib9y1767362287.png" },
+            { nom: "Issa Diop", poste: "Défenseur", club: "Fulham", photo: "https://r2.thesportsdb.com/images/media/player/cutout/e758ud1757070461.png" },
+            { nom: "Samir El Mourabet", poste: "Milieu", club: "Strasbourg", photo: "https://r2.thesportsdb.com/images/media/player/cutout/5ay7vj1766053550.png" },
+            { nom: "Ayyoub Bouaddi", poste: "Milieu", club: "Lille", photo: "https://r2.thesportsdb.com/images/media/player/cutout/g1bppf1766077416.png" },
+            { nom: "Neil El Aynaoui", poste: "Milieu", club: "AS Roma", photo: "https://r2.thesportsdb.com/images/media/player/cutout/wbm4lk1758815430.png" },
+            { nom: "Sofyan Amrabat", poste: "Milieu", club: "Real Betis", photo: "../images/Maroc/S. Amrabat.png" },
+            { nom: "Azzedine Ounahi", poste: "Milieu", club: "Girona", photo: "../images/Maroc/A. Ounahi.png" },
+            { nom: "Bilal El Khannouss", poste: "Milieu", club: "Stuttgart", photo: "../images/Maroc/B. El Khannouss.png" },
+            { nom: "Ismael Saibari", poste: "Milieu", club: "PSV Eindhoven", photo: "../images/Maroc/I. Saibari.png" },
+            { nom: "Abde Ezzalzouli", poste: "Attaquant", club: "Real Betis", photo: "https://r2.thesportsdb.com/images/media/player/cutout/c7fznc1762602800.png" },
+            { nom: "Chemsdine Talbi", poste: "Attaquant", club: "Sunderland", photo: "https://r2.thesportsdb.com/images/media/player/cutout/j2sw9j1772021582.png" },
+            { nom: "Soufiane Rahimi", poste: "Attaquant", club: "Al Ain", photo: "../images/Maroc/S. Rahimi.png" },
+            { nom: "Ayoub El Kaabi", poste: "Attaquant", club: "Olympiacos", photo: "../images/Maroc/A. El Kaabi.png" },
+            { nom: "Brahim Díaz", poste: "Attaquant", club: "Real Madrid", photo: "../images/Maroc/B. Diaz.png" },
+            { nom: "Gessime Yassine", poste: "Attaquant", club: "Strasbourg", photo: "https://r2.thesportsdb.com/images/media/player/cutout/7s81531779880041.png" },
+            { nom: "Ayoube Amaimouni", poste: "Attaquant", club: "Eintracht Frankfurt", photo: "https://r2.thesportsdb.com/images/media/player/cutout/vuid001773671351.png" }
         ]
     },
     "Netherlands": {
