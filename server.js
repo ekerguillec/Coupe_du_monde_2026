@@ -141,7 +141,10 @@ app.get('/rapid/wc/finished', async (req, res) => {
             fetch(`${base}/wc/draw?stage=group`, { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({ data: [] })),
             fetch(`${base}/wc/draw?stage=ko`,    { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({ data: [] })),
         ])
-        const finished = [...(drawGroup.data || []), ...(drawKo.data || [])].filter(m => m.status === 3 || m.status === 43)
+        // Dédoublonner par matchId (KO draw prioritaire sur group draw)
+        const seenIds = new Map()
+        ;[...(drawGroup.data || []), ...(drawKo.data || [])].forEach(m => { if (m.matchId) seenIds.set(m.matchId, m) })
+        const finished = [...seenIds.values()].filter(m => m.status === 3 || m.status === 11 || m.status === 43)
         const enriched = finished.map(m => {
             let home = m.home || '', away = m.away || ''
             const kick = m.kickoff?.slice(0, 16)
@@ -156,19 +159,38 @@ app.get('/rapid/wc/finished', async (req, res) => {
         })
         enriched.sort((a, b) => b.kickoff?.localeCompare(a.kickoff))
 
-        // Pour les matchs sans cache disque, tenter de récupérer stats/compos/résumé
-        const uncached = enriched.filter(m => m.matchId && !loadMatchFromDisk(m.matchId))
-        if (uncached.length) {
-            await Promise.all(uncached.map(async m => {
+        // Passe 1 : fetch commentary pour les matchs terminés sans cache valide
+        const toFetch = enriched.filter(m => {
+            if (!m.matchId || ![3, 11, 43].includes(m.status)) return false
+            const cached = loadMatchFromDisk(m.matchId)
+            return !cached || !(cached.commentary?.periods?.length)
+        })
+        if (toFetch.length) {
+            await Promise.all(toFetch.map(async m => {
                 try {
                     const [comRes, statRes, linRes] = await Promise.all([
                         fetch(`${base}/wc/match/${m.matchId}/commentary`, { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
                         fetch(`${base}/wc/match/${m.matchId}/stats`,      { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
                         fetch(`${base}/wc/match/${m.matchId}/lineups`,    { headers: RAPIDAPI_HEADERS }).then(r => r.json()).catch(() => ({})),
                     ])
-                    saveMatchToDisk(m.matchId, { detail: m, commentary: comRes.data || {}, stats: statRes.data || [], lineups: linRes.data || null })
+                    saveMatchToDisk(m.matchId, { detail: { ...m }, commentary: comRes.data || {}, stats: statRes.data || [], lineups: linRes.data || null })
                 } catch {}
             }))
+        }
+
+        // Passe 2 : pour tous les matchs terminés, dériver score et TAB depuis la commentary en cache
+        for (const m of enriched) {
+            if (!m.matchId || ![3, 11, 43].includes(m.status)) continue
+            const cached = loadMatchFromDisk(m.matchId)
+            const periods = cached?.commentary?.periods || []
+            if (!periods.length) continue
+            const penPeriod = periods.find(p => /penalt/i.test(p.period))
+            if (!penPeriod && m.scoreHome !== null && m.scoreAway !== null) continue
+            let sh = 0, sa = 0
+            periods.forEach(p => { if (!/penalt/i.test(p.period)) { sh += parseInt(p.scoreHome) || 0; sa += parseInt(p.scoreAway) || 0 } })
+            m.scoreHome = sh
+            m.scoreAway = sa
+            if (penPeriod) { m.penaltyHome = parseInt(penPeriod.scoreHome) || 0; m.penaltyAway = parseInt(penPeriod.scoreAway) || 0 }
         }
 
         res.json({ success: true, data: enriched })

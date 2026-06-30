@@ -42,7 +42,10 @@ function renderList(matches) {
                 <a href="${detailUrl}" class="res-card">
                     <span class="res-time">${kickoffToParisTime(m.kickoff)}</span>
                     <span class="res-team res-team-home">${m.home}</span>
-                    <span class="res-score">${m.scoreHome ?? '–'} – ${m.scoreAway ?? '–'}</span>
+                    <span class="res-score">
+                        ${m.scoreHome ?? '–'} – ${m.scoreAway ?? '–'}
+                        ${m.penaltyHome != null ? `<span class="res-tab">TAB ${m.penaltyHome}-${m.penaltyAway}</span>` : ''}
+                    </span>
                     <span class="res-team res-team-away">${m.away}</span>
                     <span class="res-round">${m.round || ''}</span>
                 </a>`
@@ -83,4 +86,9 @@ async function loadData() {
     btn.textContent = '🔄 Actualiser'
 }
 
-renderPage(loadCache())
+const cached = loadCache()
+renderPage(cached)
+// Auto-refresh si le cache contient des scores null pour des matchs terminés
+if (cached?.data?.some(m => m.status === 3 && (m.scoreHome === null || m.scoreAway === null))) {
+    loadData()
+}

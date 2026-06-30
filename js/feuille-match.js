@@ -669,20 +669,39 @@ function renderSchedule(matches) {
         ...sortedDates.filter(d => d >= today).slice(0, 7),
     ]
     return `<section class="fm-schedule">
-        <h2 class="fm-section-title">📅 Programme</h2>
-        ${display.map(date => `
-        <div class="fm-schedule-day ${date === today ? 'fm-schedule-today' : ''}">
-            <h3 class="fm-day-title">${date === today ? '⬤ Aujourd\'hui — ' : ''}${capitalize(fmtDate(date))}</h3>
-            <table class="fm-schedule-table">
-                ${grouped[date].map(m => `<tr>
-                    <td class="fm-sch-time">${m.heure}</td>
-                    <td class="fm-sch-home">${m.equipe1}</td>
-                    <td class="fm-sch-score">${m.score || '–'}</td>
-                    <td class="fm-sch-away">${m.equipe2}</td>
-                    <td class="fm-sch-group">Gr. ${m.groupe}</td>
-                </tr>`).join('')}
-            </table>
-        </div>`).join('')}
+        <h2 class="fm-sch-section-title">📅 Programme</h2>
+        ${display.map(date => {
+            const isToday = date === today
+            return `
+        <div class="fm-schedule-day${isToday ? ' fm-schedule-today' : ''}">
+            <h3 class="fm-day-title">${isToday ? '<span class="fm-today-dot"></span>' : ''}${capitalize(fmtDate(date))}</h3>
+            <div class="fm-sch-cards">
+                ${grouped[date].map(m => {
+                    const hd = paysData(m.equipe1)
+                    const ad = paysData(m.equipe2)
+                    const isDone = m.score && m.score !== '–'
+                    const label = m.groupe ? 'Gr. ' + m.groupe : (m.phase || '')
+                    return `<div class="fm-sch-card${isToday ? ' fm-sch-today-card' : ''}${isDone ? ' fm-sch-done' : ''}">
+                        <div class="fm-sch-left">
+                            <span class="fm-sch-time">${m.heure}</span>
+                            ${label ? `<span class="fm-sch-badge">${label}</span>` : ''}
+                        </div>
+                        <div class="fm-sch-body">
+                            <div class="fm-sch-team fm-sch-team-h">
+                                ${hd.iso ? `<img class="fm-sch-flag" src="https://flagcdn.com/w40/${hd.iso}.png" alt="">` : ''}
+                                <span class="fm-sch-name">${m.equipe1}</span>
+                            </div>
+                            <span class="fm-sch-vs">${isDone ? m.score : 'vs'}</span>
+                            <div class="fm-sch-team fm-sch-team-a">
+                                <span class="fm-sch-name">${m.equipe2}</span>
+                                ${ad.iso ? `<img class="fm-sch-flag" src="https://flagcdn.com/w40/${ad.iso}.png" alt="">` : ''}
+                            </div>
+                        </div>
+                    </div>`
+                }).join('')}
+            </div>
+        </div>`
+        }).join('')}
     </section>`
 }
 
