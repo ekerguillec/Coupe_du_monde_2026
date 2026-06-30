@@ -37,7 +37,7 @@ fetch('../wc2026_matches.json')
                 const raw = entree.replace(/"/g, '').trim()
                 const estCSC = /\(OG\)/i.test(raw)
                 const nom = raw
-                    .replace(/\s?\+?\d+['\u2032]/g, '')
+                    .replace(/\s?\d+(\+\d+)?['\u2032]/g, '')
                     .replace(/\s?\([^)]*\)/gi, '')
                     .trim()
                 if (nom) estCSC ? csc.push(nom) : buts.push(nom)
@@ -83,6 +83,7 @@ fetch('../wc2026_matches.json')
 
         function afficherJoueur(index) {
             const cartes = document.querySelectorAll('.carte-joueur')
+            if (!cartes.length) return
             cartes.forEach(carte => carte.style.display = 'none')
             cartes[index].style.display = 'block'
         }
@@ -160,7 +161,7 @@ fetch('../wc2026_matches.json')
                         <img src="https://flagcdn.com/w40/${isoCorrections[equipesParId[match.home_team_id].iso2.toLowerCase()] || equipesParId[match.home_team_id].iso2.toLowerCase()}.png">
                         <p>${traductions[match.home_team_name_en] || match.home_team_name_en}</p>
                     </a>
-                    <p class="score">${match.home_score} - ${match.away_score}</p>
+                    <p class="score">${(match.home_score == null || match.home_score === 'null') ? 0 : match.home_score} - ${(match.away_score == null || match.away_score === 'null') ? 0 : match.away_score}</p>
                     <a class="equipe-away equipe-link" href="./pages/pays.html?id=${match.away_team_id}">
                         <img src="https://flagcdn.com/w40/${isoCorrections[equipesParId[match.away_team_id].iso2.toLowerCase()] || equipesParId[match.away_team_id].iso2.toLowerCase()}.png">
                         <p>${traductions[match.away_team_name_en] || match.away_team_name_en}</p>
@@ -217,31 +218,19 @@ fetch('../wc2026_matches.json')
                 requestAnimationFrame(animer)
             })
         })
-    })
 
-    // Groupes + équipes
-    Promise.all([
-        apiFetch('groups'),
-        apiFetch('teams')
-    ])
-    .then(([groupes, equipes]) => {
-        const equipesParId = {}
-        equipes.teams.forEach(equipe => {
-            equipesParId[equipe.id] = equipe
-        })
-
+        // Classement recalculé depuis games (groups API est figée côté serveur)
+        const groupes = calculerClassement(games, equipes)
         const divGroupes = document.getElementById('liste_groupes')
-        groupes.groups.sort((a, b) => a.name.localeCompare(b.name)).forEach(groupe => {
+        groupes.groups.forEach(groupe => {
             let html = `<div class="carte-groupe"><h3>Groupe ${groupe.name}</h3>`
-            groupe.teams.sort((a, b) => b.pts - a.pts).forEach(equipe => {
-                let point = 0
-                if (equipe.pts==0 || equipe.pts ==1){ point = "pt"}
-                else {point = "pts"}
+            groupe.teams.sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf).forEach(equipe => {
+                const pt = equipe.pts <= 1 ? 'pt' : 'pts'
                 html += `<a class="carte-equipe" href="./pages/pays.html?id=${equipe.team_id}">
                     <div class="equipe-info"> <img src="https://flagcdn.com/w40/${(isoCorrections[equipesParId[equipe.team_id].iso2.toLowerCase()] || equipesParId[equipe.team_id].iso2).toLowerCase()}.png">
                     <p>${traductions[equipesParId[equipe.team_id].name_en] || equipesParId[equipe.team_id].name_en}</p>
                     </div>
-                    <p class="pts">${equipe.pts} ${point}</p>
+                    <p class="pts">${equipe.pts} ${pt}</p>
                 </a>`
             })
             html += `</div>`

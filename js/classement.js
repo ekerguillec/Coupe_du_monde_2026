@@ -11,18 +11,17 @@ afficherDateHeure()
 setInterval(afficherDateHeure, 1000)
 
 Promise.all([
-    apiFetch('groups'),
+    apiFetch('games'),
     apiFetch('teams')
 ])
-.then(([groupes, equipes]) => {
+.then(([games, equipes]) => {
+    const groupes = calculerClassement(games, equipes)
     const table = document.getElementById('liste_groupes')
-
-    groupes.groups.sort((a, b) => a.name.localeCompare(b.name))
 
     groupes.groups.forEach(groupe => {
         let lignes = ''
 
-        groupe.teams.sort((a, b) => b.pts - a.pts || b.gd - a.gd).forEach(equipe => {
+        groupe.teams.sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf).forEach(equipe => {
             const resultat = equipes.teams.find(element => element.id === equipe.team_id)
             lignes += `<tr>
                 <td class="Equipe"><a class="equipe-lien" href="./pays.html?id=${equipe.team_id}"><img src="${resultat.flag}"> <span>${traductions[resultat.name_en] || resultat.name_en}</span></a></td>

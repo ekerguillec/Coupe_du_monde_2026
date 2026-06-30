@@ -120,7 +120,7 @@ function ouvrirModal(joueur) {
 
 // ─── RENDER PAYS ──────────────────────────────────────
 
-function renderPays(equipe, sortedTeams) {
+function renderPays(equipe, sortedTeams, equipes) {
     const data = effectifs[equipe.name_en] || null
     const nomFr = (typeof traductions !== 'undefined' && traductions[equipe.name_en]) || equipe.name_en
 
@@ -248,8 +248,9 @@ function renderPays(equipe, sortedTeams) {
         })
     })
 
-    apiFetch('groups')
-        .then(groupes => {
+    apiFetch('games')
+        .then(games => {
+            const groupes = calculerClassement(games, equipes)
             groupes.groups.forEach(groupe => {
                 const teamData = groupe.teams.find(t => t.team_id === equipe.id)
                 if (teamData) {
@@ -305,7 +306,7 @@ apiFetch('teams')
             const nb = (typeof traductions !== 'undefined' && traductions[b.name_en]) || b.name_en
             return na.localeCompare(nb, 'fr')
         })
-        renderPays(equipe, sorted)
+        renderPays(equipe, sorted, equipes)
     })
     .catch(() => {
         contenu.innerHTML = `<div class="pays-erreur">Impossible de charger les données.</div>`

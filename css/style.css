@@ -82,6 +82,7 @@ main {
     gap: 1.25rem;
     flex: 1;
     min-height: 0;
+    overflow: hidden;
 }
 
 section {
@@ -383,6 +384,7 @@ section h2 {
     align-items: center;
     gap: 0.5rem;
     width: 100%;
+    min-height: 412px;
 }
 
 .carte-joueur img {
