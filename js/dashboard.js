@@ -115,6 +115,14 @@ fetch('../wc2026_matches.json')
 
         afficherJoueur(indexActuel)
 
+        document.getElementById('buteurs').addEventListener('mouseenter', () => clearInterval(intervalActuel))
+        document.getElementById('buteurs').addEventListener('mouseleave', () => {
+            intervalActuel = setInterval(() => {
+                indexActuel = (indexActuel + 1) % classement.length
+                afficherJoueur(indexActuel)
+            }, duree_intervalle)
+        })
+
         const equipesParId = {}
         equipes.teams.forEach(equipe => {
             equipesParId[equipe.id] = equipe
@@ -274,6 +282,28 @@ fetch('../wc2026_matches.json')
         })
     }
 
-    
+    let hovered = null
+    document.getElementById('buteurs').addEventListener('mouseenter', () => hovered = 'buteurs')
+    document.getElementById('buteurs').addEventListener('mouseleave', () => hovered = null)
+    document.getElementById('classement').addEventListener('mouseenter', () => {
+        hovered = 'classement'
+        clearInterval(intervalGroupe)
+    })
+    document.getElementById('classement').addEventListener('mouseleave', () => {
+        hovered = null
+        intervalGroupe = setInterval(() => {
+            indexGroupe = (indexGroupe + 6) % 12
+            afficherGroupes(indexGroupe)
+        }, duree_intervalle)
+    })
+
+    document.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return
+        if (hovered === 'buteurs') {
+            document.getElementById(e.key === 'ArrowLeft' ? 'btn-prev' : 'btn-next').click()
+        } else if (hovered === 'classement') {
+            document.getElementById(e.key === 'ArrowLeft' ? 'btn1-prev' : 'btn1-next').click()
+        }
+    })
 
   })
